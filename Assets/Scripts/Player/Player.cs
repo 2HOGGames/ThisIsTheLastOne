@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 
@@ -5,7 +6,7 @@ using UnityEngine;
 public class Player
 {
     public string name;
-    public int stamina, magic, might, diceAmount;
+    public int stamina, magic, might, diceAmount, lastRoll;
     public int[] results;
 
     public void heal(int healAmount)
@@ -17,12 +18,13 @@ public class Player
         stamina -= damage;
     }
 
-    public void roll(int dice)
+    public int roll(int dice)
     {
         for (int i = 0; i < dice; i++)
         {
             results[i] = Random.Range(1, 7);
         }
+        return results.Max();
     }
 
 }
