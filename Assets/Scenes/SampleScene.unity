@@ -335,7 +335,7 @@ MonoBehaviour:
     magic: 3
     might: 1
     diceAmount: 2
-    rollResults: 0000000000000000
+    results: 0000000000000000
 --- !u!58 &1706672763
 CircleCollider2D:
   m_ObjectHideFlags: 0
