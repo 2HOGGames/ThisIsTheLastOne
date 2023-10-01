@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Magician : MonoBehaviour
 {
-    [SerializeField] private Player magician;
+    public Player magician;
 
     private void rollMagician()
     {

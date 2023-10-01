@@ -2,13 +2,22 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Magician",
+            "name": "GameControls",
             "id": "5185a974-65a6-4beb-aa20-3b77d8da576f",
             "actions": [
                 {
-                    "name": "Roll",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "0881d013-94bf-4414-b2cc-6337183c14c1",
+                    "id": "c3d8d944-defe-44db-ad18-db90169fbbec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Test",
+                    "type": "Button",
+                    "id": "9e285a23-ce76-401e-a4a7-30539be100c0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -18,7 +27,130 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "808f68f7-6127-43e5-a0ba-424650304be1",
+                    "id": "afc4392a-3819-41e6-abcd-f89ac410901b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26486136-adb1-44eb-b73f-b821d7ac193a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Magician",
+            "id": "31b946f7-fedc-46df-aba9-f2a5c1f1d3ca",
+            "actions": [
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "bd3c2667-ef11-4b79-b7d6-4d040bf545c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b2916003-3c80-4982-a420-8f08d0a80ef4",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Thief",
+            "id": "f1ce81c5-190f-42f3-909a-c738463d82a7",
+            "actions": [
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "15208f55-13de-48b9-b078-a8870cec0631",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "94c94650-3037-4eb9-bdde-c2d017cab7b0",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Human",
+            "id": "6c07f289-cb16-4a76-ac9c-b0d2f16ab19d",
+            "actions": [
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "e019fd8c-fa8c-4dbf-848d-f8fa690d9dc4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ee9d2b7d-8823-4446-a11b-11a3fb627ef6",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Knight",
+            "id": "e41e60d0-cd39-422a-831a-a444d8ad69af",
+            "actions": [
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "c83d4391-d448-4ff3-a4af-9d35225fb234",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a527c89e-2dc9-4dcf-8c7a-5dd109ae0997",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
