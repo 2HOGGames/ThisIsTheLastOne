@@ -1,13 +1,18 @@
+using System.Collections;
 using System.Xml;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     private bool currentlyPaused;
+    private gameManager gameManager;
+    private Magician magician;
 
     private void Awake()
     {
         Inputs.Init(this);
+        gameManager = gameObject.GetComponent<gameManager>();
+        magician = FindAnyObjectByType<Magician>();
     }
     public void Pause()
     {
@@ -28,11 +33,12 @@ public class GameController : MonoBehaviour
         Debug.Log("Test");
     }
 
-    public void SwitchCharacter()
+    public void Roll()
     {
-
+        if (gameManager.currentPlayer == 1)
+        {
+            Debug.Log("Magician Rolled a: " + magician.rollMagician());
+        }
     }
-
-
 
 }

@@ -15,6 +15,7 @@ public static class Inputs
 
         _actions.GameControls.Pause.performed += ctx => _owner.Pause();
         _actions.GameControls.Test.performed += ctx => _owner.Test();
+        _actions.GameControls.Roll.performed += ctx => _owner.Roll();
 
         PlayMode();
     }

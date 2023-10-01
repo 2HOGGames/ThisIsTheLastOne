@@ -44,6 +44,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""e56122da-003d-45ac-bc60-585ce1d3e114"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,111 +77,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Test"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Magician"",
-            ""id"": ""31b946f7-fedc-46df-aba9-f2a5c1f1d3ca"",
-            ""actions"": [
-                {
-                    ""name"": ""Roll"",
-                    ""type"": ""Button"",
-                    ""id"": ""bd3c2667-ef11-4b79-b7d6-4d040bf545c9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""b2916003-3c80-4982-a420-8f08d0a80ef4"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Thief"",
-            ""id"": ""f1ce81c5-190f-42f3-909a-c738463d82a7"",
-            ""actions"": [
-                {
-                    ""name"": ""Roll"",
-                    ""type"": ""Button"",
-                    ""id"": ""15208f55-13de-48b9-b078-a8870cec0631"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""94c94650-3037-4eb9-bdde-c2d017cab7b0"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Human"",
-            ""id"": ""6c07f289-cb16-4a76-ac9c-b0d2f16ab19d"",
-            ""actions"": [
-                {
-                    ""name"": ""Roll"",
-                    ""type"": ""Button"",
-                    ""id"": ""e019fd8c-fa8c-4dbf-848d-f8fa690d9dc4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""ee9d2b7d-8823-4446-a11b-11a3fb627ef6"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Roll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Knight"",
-            ""id"": ""e41e60d0-cd39-422a-831a-a444d8ad69af"",
-            ""actions"": [
-                {
-                    ""name"": ""Roll"",
-                    ""type"": ""Button"",
-                    ""id"": ""c83d4391-d448-4ff3-a4af-9d35225fb234"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a527c89e-2dc9-4dcf-8c7a-5dd109ae0997"",
+                    ""id"": ""7ea1c7fc-f7a8-4d41-bb57-0907288908e2"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -190,18 +98,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GameControls = asset.FindActionMap("GameControls", throwIfNotFound: true);
         m_GameControls_Pause = m_GameControls.FindAction("Pause", throwIfNotFound: true);
         m_GameControls_Test = m_GameControls.FindAction("Test", throwIfNotFound: true);
-        // Magician
-        m_Magician = asset.FindActionMap("Magician", throwIfNotFound: true);
-        m_Magician_Roll = m_Magician.FindAction("Roll", throwIfNotFound: true);
-        // Thief
-        m_Thief = asset.FindActionMap("Thief", throwIfNotFound: true);
-        m_Thief_Roll = m_Thief.FindAction("Roll", throwIfNotFound: true);
-        // Human
-        m_Human = asset.FindActionMap("Human", throwIfNotFound: true);
-        m_Human_Roll = m_Human.FindAction("Roll", throwIfNotFound: true);
-        // Knight
-        m_Knight = asset.FindActionMap("Knight", throwIfNotFound: true);
-        m_Knight_Roll = m_Knight.FindAction("Roll", throwIfNotFound: true);
+        m_GameControls_Roll = m_GameControls.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,12 +162,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IGameControlsActions> m_GameControlsActionsCallbackInterfaces = new List<IGameControlsActions>();
     private readonly InputAction m_GameControls_Pause;
     private readonly InputAction m_GameControls_Test;
+    private readonly InputAction m_GameControls_Roll;
     public struct GameControlsActions
     {
         private @PlayerInput m_Wrapper;
         public GameControlsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_GameControls_Pause;
         public InputAction @Test => m_Wrapper.m_GameControls_Test;
+        public InputAction @Roll => m_Wrapper.m_GameControls_Roll;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -286,6 +185,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Test.started += instance.OnTest;
             @Test.performed += instance.OnTest;
             @Test.canceled += instance.OnTest;
+            @Roll.started += instance.OnRoll;
+            @Roll.performed += instance.OnRoll;
+            @Roll.canceled += instance.OnRoll;
         }
 
         private void UnregisterCallbacks(IGameControlsActions instance)
@@ -296,6 +198,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Test.started -= instance.OnTest;
             @Test.performed -= instance.OnTest;
             @Test.canceled -= instance.OnTest;
+            @Roll.started -= instance.OnRoll;
+            @Roll.performed -= instance.OnRoll;
+            @Roll.canceled -= instance.OnRoll;
         }
 
         public void RemoveCallbacks(IGameControlsActions instance)
@@ -313,209 +218,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public GameControlsActions @GameControls => new GameControlsActions(this);
-
-    // Magician
-    private readonly InputActionMap m_Magician;
-    private List<IMagicianActions> m_MagicianActionsCallbackInterfaces = new List<IMagicianActions>();
-    private readonly InputAction m_Magician_Roll;
-    public struct MagicianActions
-    {
-        private @PlayerInput m_Wrapper;
-        public MagicianActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Roll => m_Wrapper.m_Magician_Roll;
-        public InputActionMap Get() { return m_Wrapper.m_Magician; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MagicianActions set) { return set.Get(); }
-        public void AddCallbacks(IMagicianActions instance)
-        {
-            if (instance == null || m_Wrapper.m_MagicianActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MagicianActionsCallbackInterfaces.Add(instance);
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
-        }
-
-        private void UnregisterCallbacks(IMagicianActions instance)
-        {
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
-        }
-
-        public void RemoveCallbacks(IMagicianActions instance)
-        {
-            if (m_Wrapper.m_MagicianActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IMagicianActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MagicianActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MagicianActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public MagicianActions @Magician => new MagicianActions(this);
-
-    // Thief
-    private readonly InputActionMap m_Thief;
-    private List<IThiefActions> m_ThiefActionsCallbackInterfaces = new List<IThiefActions>();
-    private readonly InputAction m_Thief_Roll;
-    public struct ThiefActions
-    {
-        private @PlayerInput m_Wrapper;
-        public ThiefActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Roll => m_Wrapper.m_Thief_Roll;
-        public InputActionMap Get() { return m_Wrapper.m_Thief; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ThiefActions set) { return set.Get(); }
-        public void AddCallbacks(IThiefActions instance)
-        {
-            if (instance == null || m_Wrapper.m_ThiefActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_ThiefActionsCallbackInterfaces.Add(instance);
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
-        }
-
-        private void UnregisterCallbacks(IThiefActions instance)
-        {
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
-        }
-
-        public void RemoveCallbacks(IThiefActions instance)
-        {
-            if (m_Wrapper.m_ThiefActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IThiefActions instance)
-        {
-            foreach (var item in m_Wrapper.m_ThiefActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_ThiefActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public ThiefActions @Thief => new ThiefActions(this);
-
-    // Human
-    private readonly InputActionMap m_Human;
-    private List<IHumanActions> m_HumanActionsCallbackInterfaces = new List<IHumanActions>();
-    private readonly InputAction m_Human_Roll;
-    public struct HumanActions
-    {
-        private @PlayerInput m_Wrapper;
-        public HumanActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Roll => m_Wrapper.m_Human_Roll;
-        public InputActionMap Get() { return m_Wrapper.m_Human; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(HumanActions set) { return set.Get(); }
-        public void AddCallbacks(IHumanActions instance)
-        {
-            if (instance == null || m_Wrapper.m_HumanActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_HumanActionsCallbackInterfaces.Add(instance);
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
-        }
-
-        private void UnregisterCallbacks(IHumanActions instance)
-        {
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
-        }
-
-        public void RemoveCallbacks(IHumanActions instance)
-        {
-            if (m_Wrapper.m_HumanActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IHumanActions instance)
-        {
-            foreach (var item in m_Wrapper.m_HumanActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_HumanActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public HumanActions @Human => new HumanActions(this);
-
-    // Knight
-    private readonly InputActionMap m_Knight;
-    private List<IKnightActions> m_KnightActionsCallbackInterfaces = new List<IKnightActions>();
-    private readonly InputAction m_Knight_Roll;
-    public struct KnightActions
-    {
-        private @PlayerInput m_Wrapper;
-        public KnightActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Roll => m_Wrapper.m_Knight_Roll;
-        public InputActionMap Get() { return m_Wrapper.m_Knight; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(KnightActions set) { return set.Get(); }
-        public void AddCallbacks(IKnightActions instance)
-        {
-            if (instance == null || m_Wrapper.m_KnightActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_KnightActionsCallbackInterfaces.Add(instance);
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
-        }
-
-        private void UnregisterCallbacks(IKnightActions instance)
-        {
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
-        }
-
-        public void RemoveCallbacks(IKnightActions instance)
-        {
-            if (m_Wrapper.m_KnightActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IKnightActions instance)
-        {
-            foreach (var item in m_Wrapper.m_KnightActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_KnightActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public KnightActions @Knight => new KnightActions(this);
     public interface IGameControlsActions
     {
         void OnPause(InputAction.CallbackContext context);
         void OnTest(InputAction.CallbackContext context);
-    }
-    public interface IMagicianActions
-    {
-        void OnRoll(InputAction.CallbackContext context);
-    }
-    public interface IThiefActions
-    {
-        void OnRoll(InputAction.CallbackContext context);
-    }
-    public interface IHumanActions
-    {
-        void OnRoll(InputAction.CallbackContext context);
-    }
-    public interface IKnightActions
-    {
         void OnRoll(InputAction.CallbackContext context);
     }
 }

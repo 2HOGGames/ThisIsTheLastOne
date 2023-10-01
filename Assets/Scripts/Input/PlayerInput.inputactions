@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "e56122da-003d-45ac-bc60-585ce1d3e114",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -46,111 +55,10 @@
                     "action": "Test",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Magician",
-            "id": "31b946f7-fedc-46df-aba9-f2a5c1f1d3ca",
-            "actions": [
-                {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "bd3c2667-ef11-4b79-b7d6-4d040bf545c9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "b2916003-3c80-4982-a420-8f08d0a80ef4",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Thief",
-            "id": "f1ce81c5-190f-42f3-909a-c738463d82a7",
-            "actions": [
-                {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "15208f55-13de-48b9-b078-a8870cec0631",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "94c94650-3037-4eb9-bdde-c2d017cab7b0",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Human",
-            "id": "6c07f289-cb16-4a76-ac9c-b0d2f16ab19d",
-            "actions": [
-                {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "e019fd8c-fa8c-4dbf-848d-f8fa690d9dc4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "ee9d2b7d-8823-4446-a11b-11a3fb627ef6",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Knight",
-            "id": "e41e60d0-cd39-422a-831a-a444d8ad69af",
-            "actions": [
-                {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "c83d4391-d448-4ff3-a4af-9d35225fb234",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "a527c89e-2dc9-4dcf-8c7a-5dd109ae0997",
+                    "id": "7ea1c7fc-f7a8-4d41-bb57-0907288908e2",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
