@@ -13,10 +13,10 @@ public class RollTheDice : MonoBehaviour
     {
         gameManager = GetComponent<gameManager>();
     }
-    public int Roll()
+    /*public int Roll()
     {
 
-    }
+    }*/
 
     private int RollMagician()
     {
