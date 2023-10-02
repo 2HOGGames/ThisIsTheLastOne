@@ -21,7 +21,7 @@ public class RollTheDice : MonoBehaviour
         gameManager = GetComponent<gameManager>();
     }
 
-    public int RollMagician()
+    public void RollMagician()
     {
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
@@ -30,11 +30,9 @@ public class RollTheDice : MonoBehaviour
         //Lucky Seven
         if (result[0] + result[1] == 7)
             magician.PlayerClass.heal(2);
-
-        return result.Max();
     }
 
-    public int RollKnight()
+    public void RollKnight()
     {
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
@@ -48,10 +46,11 @@ public class RollTheDice : MonoBehaviour
         }
 
         //Returns the average of both dice rolls + Might Stat
-        return (Mathf.RoundToInt(result[0] + result[1] / 2) + knight.PlayerClass.might);
+
+        //(Mathf.RoundToInt(result[0] + result[1] / 2) + knight.PlayerClass.might);
     }
 
-    public int RollThief()
+    public void RollThief()
     {
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
@@ -65,12 +64,10 @@ public class RollTheDice : MonoBehaviour
 
         sum = Mathf.RoundToInt(sum * 0.5f);
 
-        return sum;
-
         //Rerolling controlled in _ script
     }
 
-    public int RollHuman()
+    public void RollHuman()
     {
         result[0] = Random.Range(1, 7);
 
@@ -78,7 +75,5 @@ public class RollTheDice : MonoBehaviour
             human.PlayerClass.heal(2);
         else
             human.PlayerClass.heal(1);
-
-        return result.Max();
     }
 }
