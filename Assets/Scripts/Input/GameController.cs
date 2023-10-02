@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
     {
         Inputs.Init(this);
         gameManager = gameObject.GetComponent<gameManager>();
-        magician = FindAnyObjectByType<Magician>();
     }
     public void Pause()
     {
@@ -37,7 +36,7 @@ public class GameController : MonoBehaviour
     {
         if (gameManager.currentPlayer == 1)
         {
-            Debug.Log("Magician Rolled a: " + magician.rollMagician());
+
         }
     }
 

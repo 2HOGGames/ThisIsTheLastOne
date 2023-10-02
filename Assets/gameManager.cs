@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class gameManager : MonoBehaviour
 {
-    public int currentPlayer;
+    public static gameManager Instance;
+
     public GameObject[] players = new GameObject[4];
+
+    public int currentPlayer;
     
-
-
-    private void Start()
+    void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
 
-        
     }
 
 }

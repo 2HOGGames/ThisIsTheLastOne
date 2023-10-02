@@ -8,22 +8,6 @@ public class Magician : MonoBehaviour
     private int roll1;
     private int roll2;
 
-    public int rollMagician()
-    {
-        roll1 = Random.Range(1, 7);
-        roll2 = Random.Range(1, 7);
-        SevenCheck();
-
-        if (roll1 < roll2)
-        {
-            return roll2;
-        }    
-        else
-        {
-            return roll1;
-        }
-    }
-
     private void SevenCheck()
     {
         if (roll1 + roll2 == 7)

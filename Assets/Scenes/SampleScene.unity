@@ -159,8 +159,6 @@ MonoBehaviour:
     magic: 1
     might: 1
     diceAmount: 3
-    lastRoll: 0
-    results: 000000000000000000000000
 --- !u!58 &21790746
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -464,6 +462,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &408958959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408958962}
+  - component: {fileID: 408958961}
+  - component: {fileID: 408958960}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &408958960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408958959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &408958961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408958959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &408958962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408958959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,8 +742,6 @@ MonoBehaviour:
     magic: 1
     might: 3
     diceAmount: 2
-    lastRoll: 0
-    results: 0000000000000000
 --- !u!58 &1560545263
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -765,8 +829,6 @@ MonoBehaviour:
     magic: 3
     might: 1
     diceAmount: 2
-    lastRoll: 0
-    results: 0000000000000000
 --- !u!58 &1706672763
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -854,8 +916,6 @@ MonoBehaviour:
     magic: 2
     might: 2
     diceAmount: 1
-    lastRoll: 0
-    results: 
 --- !u!58 &1841033892
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -918,6 +978,7 @@ GameObject:
   - component: {fileID: 1986637968}
   - component: {fileID: 1986637967}
   - component: {fileID: 1986637969}
+  - component: {fileID: 1986637970}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -946,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 1986637966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46402335, y: 2.472448, z: 0.03446066}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -964,7 +1025,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219b9fa4227cc564cb517e471f1d155d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPlayer: 1
+--- !u!114 &1986637970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986637966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8552b55b4d71da142bfcfdad7f7554cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -975,3 +1053,4 @@ SceneRoots:
   - {fileID: 21790747}
   - {fileID: 1841033893}
   - {fileID: 1986637968}
+  - {fileID: 408958962}
