@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Thief : MonoBehaviour
 {
-    [SerializeField] private Player thief;
+    public Player PlayerClass;
 }
