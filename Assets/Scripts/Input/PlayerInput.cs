@@ -37,15 +37,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Test"",
-                    ""type"": ""Button"",
-                    ""id"": ""9e285a23-ce76-401e-a4a7-30539be100c0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Roll"",
                     ""type"": ""Button"",
                     ""id"": ""e56122da-003d-45ac-bc60-585ce1d3e114"",
@@ -69,19 +60,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""26486136-adb1-44eb-b73f-b821d7ac193a"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Test"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7ea1c7fc-f7a8-4d41-bb57-0907288908e2"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -97,7 +77,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // GameControls
         m_GameControls = asset.FindActionMap("GameControls", throwIfNotFound: true);
         m_GameControls_Pause = m_GameControls.FindAction("Pause", throwIfNotFound: true);
-        m_GameControls_Test = m_GameControls.FindAction("Test", throwIfNotFound: true);
         m_GameControls_Roll = m_GameControls.FindAction("Roll", throwIfNotFound: true);
     }
 
@@ -161,14 +140,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GameControls;
     private List<IGameControlsActions> m_GameControlsActionsCallbackInterfaces = new List<IGameControlsActions>();
     private readonly InputAction m_GameControls_Pause;
-    private readonly InputAction m_GameControls_Test;
     private readonly InputAction m_GameControls_Roll;
     public struct GameControlsActions
     {
         private @PlayerInput m_Wrapper;
         public GameControlsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_GameControls_Pause;
-        public InputAction @Test => m_Wrapper.m_GameControls_Test;
         public InputAction @Roll => m_Wrapper.m_GameControls_Roll;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
@@ -182,9 +159,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Test.started += instance.OnTest;
-            @Test.performed += instance.OnTest;
-            @Test.canceled += instance.OnTest;
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
@@ -195,9 +169,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Test.started -= instance.OnTest;
-            @Test.performed -= instance.OnTest;
-            @Test.canceled -= instance.OnTest;
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
@@ -221,7 +192,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IGameControlsActions
     {
         void OnPause(InputAction.CallbackContext context);
-        void OnTest(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
     }
 }

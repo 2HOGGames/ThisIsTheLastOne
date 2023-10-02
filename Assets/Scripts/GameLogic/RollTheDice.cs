@@ -20,13 +20,8 @@ public class RollTheDice : MonoBehaviour
     {
         gameManager = GetComponent<gameManager>();
     }
-   
-    /*public int Roll()
-    {
 
-    }*/
-
-    private int RollMagician()
+    public int RollMagician()
     {
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
@@ -39,7 +34,7 @@ public class RollTheDice : MonoBehaviour
         return result.Max();
     }
 
-    private int RollKnight()
+    public int RollKnight()
     {
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
@@ -56,7 +51,7 @@ public class RollTheDice : MonoBehaviour
         return (Mathf.RoundToInt(result[0] + result[1] / 2) + knight.PlayerClass.might);
     }
 
-    private int RollThief()
+    public int RollThief()
     {
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
@@ -75,7 +70,7 @@ public class RollTheDice : MonoBehaviour
         //Rerolling controlled in _ script
     }
 
-    private int RollHuman()
+    public int RollHuman()
     {
         result[0] = Random.Range(1, 7);
 

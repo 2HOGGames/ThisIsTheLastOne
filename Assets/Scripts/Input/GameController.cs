@@ -6,11 +6,15 @@ public class GameController : MonoBehaviour
 {
     private bool currentlyPaused;
     private gameManager gameManager;
-    private Magician magician;
+
+    private RollTheDice rollTheDice;
+
+    int currentPlayer;
 
     private void Awake()
     {
         Inputs.Init(this);
+        rollTheDice = gameObject.GetComponent<RollTheDice>();
         gameManager = gameObject.GetComponent<gameManager>();
     }
     public void Pause()
@@ -34,9 +38,20 @@ public class GameController : MonoBehaviour
 
     public void Roll()
     {
-        if (gameManager.currentPlayer == 1)
+        switch (gameManager.currentPlayer)
         {
-
+            case 0:
+                rollTheDice.RollMagician();
+                break;
+            case 1:
+                rollTheDice.RollKnight();
+                break;
+            case 2:
+                rollTheDice.RollThief();
+                break;
+            case 3:
+                rollTheDice.RollHuman();
+                break;
         }
     }
 
