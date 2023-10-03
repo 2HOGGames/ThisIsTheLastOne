@@ -12,7 +12,7 @@ public class gameManager : MonoBehaviour
     
     public int currentPlayer;
     private int[] newCards = new int[2];
-    
+    private int chosenRoom, discardedRoom;
     
     void Awake()
     {
@@ -27,15 +27,21 @@ public class gameManager : MonoBehaviour
     private void Start()
     {
         
-        checkDrawnCard();
+        
         GameLoop();
     }
     private void GameLoop()
     {
-
+        Debug.Log("first room");
+        chosenRoom = deckShuffler.firstCard();
+       challengeDeck.ChosenRoom(chosenRoom);
+       Debug.Log("Second Room");
+        checkDrawnCard();
+        challengeDeck.ChosenRoom(newCards[0]);
         challengeDeck.ChosenRoom(newCards[1]);
-
-
+        deckShuffler.ReformDeck(newCards[0]);
+        checkDrawnCard();
+        deckShuffler.ReformDeck(newCards[0]);
 
 
 

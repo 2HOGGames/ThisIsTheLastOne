@@ -9,29 +9,16 @@ public class DeckShuffler : MonoBehaviour
     [SerializeField] private int[] freeSpaces = new int[6];//stores chosen spaces
     int randomNum;
     bool spaceTaken = false;
-    private int CardsDrawn = 1;
+    private int CardsDrawn = 0;
 
     public int card1, card2;
 
     private void Start()
     {
         Shuffle();
-        firstCard();
         
-       /* Shuffle();
-        for(int i = 0; i <= deck.Length - 1; i++)
-        {
-            Debug.Log(deck[i]);
-        }
-
-        Drawnext();
-        ReformDeck();
-        Debug.Log("after a card is drawn");
-        for (int i = 0; i <= deck.Length - 1; i++)
-        {
-            
-            Debug.Log(deck[i]);
-        }*/
+        
+       
     }
     public void Shuffle()//shuffles the deck by placing a value from 1-11 in a random index (position in the deck)
     {
@@ -40,7 +27,7 @@ public class DeckShuffler : MonoBehaviour
             spaceTaken = false;//sets the current space as false to initialize the loop
             while(spaceTaken == false)//loops until the space is taken (a card that hasnt been sorted is sorted)
             {
-                randomNum = Random.Range(0, (deck.Length +1));//accesss a random index of the array
+                randomNum = Random.Range(0, (deck.Length));//accesss a random index of the array
 
 
                 if(freeSpaces[randomNum] == 0)//if that index hasnt been used yet
@@ -60,24 +47,26 @@ public class DeckShuffler : MonoBehaviour
        
     }
     //draws the first card to start the game, resets the deck positions after
-    private void firstCard()
+    public int firstCard()
     {
         card1 = deck[0];
+        CardsDrawn++;
         for (int i = 1; i <= deck.Length - 1; i++)
         {
+           
             deck[i - 1] = deck[i];
             deck[i] = 0;
 
 
         }
-        CardsDrawn++;
+        return (card1);
     }
     public void Drawnext()//draws the next two cards for reference
     {
          card1 = deck[0];
          card2 = deck[1];
-        
-        Debug.Log("you drew " + card1 + " and " + card2);
+        CardsDrawn ++;
+       // Debug.Log("you drew " + card1 + " and " + card2);
 
         
 
@@ -94,12 +83,13 @@ public class DeckShuffler : MonoBehaviour
     {
         for (int i = 2; i <= deck.Length - 1; i++)
         {
+            Debug.Log("Index " + (i - 2) + "was " + deck[i - 2] + "It became " + deck[i]);
             deck[i - 2] = deck[i];
             deck[i] = 0;
 
 
         }
-        deck[(deck.Length -1) - CardsDrawn] =  nonChosen;
+        deck[(deck.Length - 1) - CardsDrawn] = nonChosen;
         CardsDrawn++;
     }
 }
