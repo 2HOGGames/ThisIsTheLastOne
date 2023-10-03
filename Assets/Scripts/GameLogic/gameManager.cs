@@ -32,7 +32,7 @@ public class gameManager : MonoBehaviour
     }
     private void GameLoop()
     {
-        Debug.Log("first room");
+        /*Debug.Log("first room");
         chosenRoom = deckShuffler.firstCard();
        challengeDeck.ChosenRoom(chosenRoom);
        Debug.Log("Second Room");
@@ -42,7 +42,7 @@ public class gameManager : MonoBehaviour
         deckShuffler.ReformDeck(newCards[0]);
         checkDrawnCard();
         deckShuffler.ReformDeck(newCards[0]);
-
+*/
 
 
     }
