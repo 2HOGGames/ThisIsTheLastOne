@@ -28,11 +28,12 @@ public class gameManager : MonoBehaviour
     {
         
         checkDrawnCard();
+        GameLoop();
     }
     private void GameLoop()
     {
-       
-       
+
+        challengeDeck.ChosenRoom(newCards[1]);
 
 
 

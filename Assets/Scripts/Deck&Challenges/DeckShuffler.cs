@@ -40,7 +40,7 @@ public class DeckShuffler : MonoBehaviour
             spaceTaken = false;//sets the current space as false to initialize the loop
             while(spaceTaken == false)//loops until the space is taken (a card that hasnt been sorted is sorted)
             {
-                randomNum = Random.Range(0, 6);//accesss a random index of the array
+                randomNum = Random.Range(0, (deck.Length +1));//accesss a random index of the array
 
 
                 if(freeSpaces[randomNum] == 0)//if that index hasnt been used yet
@@ -59,6 +59,7 @@ public class DeckShuffler : MonoBehaviour
 
        
     }
+    //draws the first card to start the game, resets the deck positions after
     private void firstCard()
     {
         card1 = deck[0];
@@ -71,7 +72,7 @@ public class DeckShuffler : MonoBehaviour
         }
         CardsDrawn++;
     }
-    public void Drawnext()
+    public void Drawnext()//draws the next two cards for reference
     {
          card1 = deck[0];
          card2 = deck[1];
@@ -81,7 +82,7 @@ public class DeckShuffler : MonoBehaviour
         
 
     }
-    public int[] DrawnCards()
+    public int[] DrawnCards()//returns an array containing the two drawn cards
     {
         int[] cards = new int[2];
         Drawnext();
@@ -89,7 +90,7 @@ public class DeckShuffler : MonoBehaviour
         cards[1] = card2;
         return (cards);
     }
-    public void ReformDeck(int nonChosen)
+    public void ReformDeck(int nonChosen)//resets the deck and puts the card not chosen by the player back on the bottom of the deck
     {
         for (int i = 2; i <= deck.Length - 1; i++)
         {
@@ -98,7 +99,7 @@ public class DeckShuffler : MonoBehaviour
 
 
         }
-        deck[5 - CardsDrawn] =  nonChosen;
+        deck[(deck.Length -1) - CardsDrawn] =  nonChosen;
         CardsDrawn++;
     }
 }
