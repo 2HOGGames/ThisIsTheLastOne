@@ -83,7 +83,7 @@ public class DeckShuffler : MonoBehaviour
     {
         for (int i = 2; i <= deck.Length - 1; i++)
         {
-            Debug.Log("Index " + (i - 2) + "was " + deck[i - 2] + "It became " + deck[i]);
+            //Debug.Log("Index " + (i - 2) + "was " + deck[i - 2] + "It became " + deck[i]);
             deck[i - 2] = deck[i];
             deck[i] = 0;
 
