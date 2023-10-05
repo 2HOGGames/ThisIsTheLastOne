@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Xml;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -36,23 +37,20 @@ public class GameController : MonoBehaviour
         Debug.Log("Test");
     }
 
-    public void Roll()
+    public int Roll()
     {
         switch (gameManager.currentPlayer)
         {
             case 0:
-                rollTheDice.RollMagician();
-                break;
+                return rollTheDice.RollMagician();
             case 1:
-                rollTheDice.RollKnight();
-                break;
+                return rollTheDice.RollKnight();
             case 2:
-                rollTheDice.RollThief();
-                break;
+                return rollTheDice.RollThief();
             case 3:
-                rollTheDice.RollHuman();
-                break;
+                return rollTheDice.RollHuman();
         }
+        return 0;
     }
 
 }
