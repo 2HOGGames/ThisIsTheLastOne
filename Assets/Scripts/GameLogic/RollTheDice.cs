@@ -1,10 +1,12 @@
 using System.Linq;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class RollTheDice : MonoBehaviour
 {
-    private int[] result;
+    public int[] result;
 
 
     private gameManager gameManager;
@@ -16,9 +18,18 @@ public class RollTheDice : MonoBehaviour
     private Human human;
 
 
+
+
+    [SerializeField] private TextMeshProUGUI statNumber;
+    [SerializeField] private Animator magicianAnimator;
+    [SerializeField] private UnityEngine.UI.Image die1;
+    [SerializeField] private UnityEngine.UI.Image die2;
+    [SerializeField] private Sprite[] dieSprites;
+
     private void Awake()
     {
         gameManager = GetComponent<gameManager>();
+        magician = FindObjectOfType<Magician>();
     }
 
     public int RollMagician()
@@ -26,12 +37,29 @@ public class RollTheDice : MonoBehaviour
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
 
+        die1.sprite = dieSprites[result[0] - 1];
+        die2.sprite = dieSprites[result[1] - 1];
+        statNumber.text = magician.PlayerClass.magic.ToString();
+
+        magicianAnimator.SetTrigger("StartAnim");
 
         //Lucky Seven
         if (result[0] + result[1] == 7)
+        {
             magician.PlayerClass.heal(2);
+            magicianAnimator.SetBool("LuckySeven", true);
+        }
 
-        return result.Max();
+        if (result[0] >= result[1])
+        {
+            magicianAnimator.SetTrigger("Roll1");
+        }
+        else
+        {
+            magicianAnimator.SetTrigger("Roll2");
+        }
+
+        return result.Max() + magician.PlayerClass.magic;
     }
 
     public int RollKnight()

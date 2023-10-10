@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
 
     public int Roll()
     {
-        switch (gameManager.currentPlayer)
+        /*switch (gameManager.currentPlayer)
         {
             case 0:
                 return rollTheDice.RollMagician();
@@ -50,7 +50,8 @@ public class GameController : MonoBehaviour
             case 3:
                 return rollTheDice.RollHuman();
         }
-        return 0;
+        return 0;*/
+        return rollTheDice.RollMagician();
     }
 
 }
