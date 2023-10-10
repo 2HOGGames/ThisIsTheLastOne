@@ -33,7 +33,6 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
-
         //Commented this out so the game owuld run idk what happend......
         //chosenRoom = deckShuffler.firstCard();
         roomCompleted = false;
