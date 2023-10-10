@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result: 0000000000000000
-  statNumber: {fileID: 1068114183}
+  statNumber: {fileID: 1597502646}
   magicianAnimator: {fileID: 1332575303}
   die1: {fileID: 1672707830}
   die2: {fileID: 78433713}
