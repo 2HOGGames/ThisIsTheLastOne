@@ -141,13 +141,16 @@ public class gameManager : MonoBehaviour
                     switch (sortingArray[i])
                     {
                         case 0:
-                            
+                            players[0].GetComponent<Magician>().PlayerClass.hurt(challengeInfo[2]);
                             break;
                         case 1:
+                            players[1].GetComponent<Knight>().PlayerClass.hurt(challengeInfo[2]);
                             break;
                         case 2:
+                            players[2].GetComponent<Thief>().PlayerClass.hurt(challengeInfo[2]);
                             break;
                         case 3:
+                            players[3].GetComponent<Human>().PlayerClass.hurt(challengeInfo[2]);
                             break;
                     }
                 }

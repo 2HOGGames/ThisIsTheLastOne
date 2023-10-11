@@ -44,7 +44,7 @@ public class Magician : MonoBehaviour
             magicianAnimator.SetBool("LuckySeven", true);
         }
 
-        if (PlayerClass.result[0] >= PlayerClass.result[1])
+        if (PlayerClass.result[0] <= PlayerClass.result[1])
         {
             magicianAnimator.SetTrigger("Roll1");
         }
@@ -53,6 +53,6 @@ public class Magician : MonoBehaviour
             magicianAnimator.SetTrigger("Roll2");
         }
 
-        return PlayerClass.result.Max() + PlayerClass.magic;
+        return PlayerClass.result.Min() + PlayerClass.magic;
     }
 }
