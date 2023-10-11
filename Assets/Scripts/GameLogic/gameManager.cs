@@ -5,22 +5,30 @@ public class gameManager : MonoBehaviour
     public static gameManager Instance;
    
 
-    public  DeckShuffler deckShuffler;
-    public ChallengeDeck challengeDeck;
-    public GameController gameController;
+    public  DeckShuffler deckShuffler;//deck shuffling object
+    public ChallengeDeck challengeDeck;//chellenge deck object
+    public GameController gameController;//game controller object
 
 
-    public GameObject[] players = new GameObject[4];
+    public GameObject[] players = new GameObject[4];//players
     
-    public int currentPlayer = 0;
-    private int[] newCards = new int[2];
-    private int[] challengeInfo = new int[3];
-    [SerializeField]private int[] playerRolls = new int [4];
-   [SerializeField] private int[] points = new int[4];
-    private int[] sortingArray = new int[] { 1, 2, 3, 4 };
-    private int chosenRoom, discardedRoom;
-    private bool selectingRoom = false;
-    private bool roomCompleted = false;
+    public int currentPlayer = 0;//current players turn
+
+
+    private int[] newCards = new int[2];//current cards waiting to be chosen
+
+    private int[] challengeInfo = new int[3];//the details of the current challenge
+
+    [SerializeField]private int[] playerRolls = new int [4];//what each player rolled
+
+   [SerializeField] private int[] points = new int[4];//how many points each player has
+
+    private int[] sortingArray = new int[] { 1, 2, 3, 4 };//keeps player rolls position during sorting
+
+    private int chosenRoom, discardedRoom;//room chosen and room discarded
+
+    private bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
+    
 
     private int numRoomCompleted;
 
@@ -40,39 +48,12 @@ public class gameManager : MonoBehaviour
         //Commented this out so the game owuld run idk what happend......
         //chosenRoom = deckShuffler.firstCard();
         chosenRoom = 0;
-        roomCompleted = false;
+        
         
     }
     private void Update()
     {
-        /*if(!roomCompleted){
-            challengeDeck.ChosenRoom(chosenRoom);
-        } else if (roomCompleted)
-        {
-            selectingRoom = true;
-        }
-        if (selectingRoom)
-        {
-            checkDrawnCard();
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                chosenRoom = newCards[0];
-                discardedRoom = newCards[1];
-                selectingRoom = false;
-                deckShuffler.ReformDeck(discardedRoom);
-                challengeDeck.ChosenRoom(chosenRoom);
-
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                chosenRoom = newCards[1];
-                discardedRoom = newCards[0];
-                selectingRoom = false;
-                deckShuffler.ReformDeck(discardedRoom);
-                challengeDeck.ChosenRoom(chosenRoom);
-            }
-            
-        }*/
+       
     }
     public void GameLoop()
     {
@@ -86,6 +67,7 @@ public class gameManager : MonoBehaviour
         if(currentPlayer == 4)
         {
             SortResults();
+            CheckWinRoom();
             currentPlayer = 0;
         }
         
@@ -122,7 +104,34 @@ public class gameManager : MonoBehaviour
    private void CheckWinRoom()
     {
         challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
+        //check if all tied
+        if(playerRolls[0] == playerRolls[3])
+        {
+            Debug.Log("everyone Tied");
+        }
+        //check if 3 tied
+        else if(playerRolls[0] == playerRolls[2])
+        {
+            Debug.Log("3 people tied");
+        }
+        //check if two tied
+        else if(playerRolls[0] == playerRolls[1])
+        {
+            Debug.Log("2 people tied");
+        }
+        else
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+                if(playerRolls[i] < challengeInfo[0])
+                {
+                    Debug.Log("player " + sortingArray[i] + "failed the challenge");
+                }
 
+            }
+        }
+
+        
         
 
     }
