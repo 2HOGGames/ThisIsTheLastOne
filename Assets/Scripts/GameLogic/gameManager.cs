@@ -78,6 +78,7 @@ public class gameManager : MonoBehaviour
                     selectingRoom = true;
                     SortResults();
                     CheckWinRoom();
+                    checkDrawnCard();
                     currentPlayer = 0;
                 }
                 alreadyRolling = false;
@@ -163,7 +164,7 @@ public class gameManager : MonoBehaviour
             givingPoint = 3;
         }
 
-        selectingRoom = false;
+        
         
 
     }
@@ -174,8 +175,23 @@ public class gameManager : MonoBehaviour
     private void checkDrawnCard()
     {
         newCards = deckShuffler.DrawnCards();
-        
-       // Debug.Log(newCards[0]);
-        //Debug.Log(newCards[1]);
+
+        while (selectingRoom)
+        {
+
+            if (Input.GetButtonDown("1"))
+            {
+                chosenRoom = newCards[0];
+                discardedRoom = newCards[1];
+                selectingRoom = false;
+            }
+            if (Input.GetButtonDown("2"))
+            {
+                chosenRoom = newCards[1];
+                discardedRoom = newCards[0];
+                selectingRoom = false;
+            }
+
+        }
     }
 }
