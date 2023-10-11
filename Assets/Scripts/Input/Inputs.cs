@@ -6,15 +6,18 @@ public static class Inputs
 {
     private static PlayerInput _actions;
     private static GameController _owner;
+    
 
+    
     public static void Init(GameController gameController)
     {
+      
         _actions = new PlayerInput();
 
         _owner = gameController;
 
         _actions.GameControls.Pause.performed += ctx => _owner.Pause();
-        _actions.GameControls.Roll.performed += ctx => _owner.Roll();
+        _actions.GameControls.Roll.performed += ctx => _owner.playerInput();
 
         PlayMode();
     }

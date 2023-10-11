@@ -38,6 +38,10 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Test");
     }
+    public void playerInput()
+    {
+        gameManager.GameLoop();
+    }
     public int Roll()
     {
         switch (gameManager.currentPlayer)
