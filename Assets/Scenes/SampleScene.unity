@@ -4107,6 +4107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8552b55b4d71da142bfcfdad7f7554cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &1991981573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7231973131376867372, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
@@ -4302,8 +4303,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1079411880}
-  - {fileID: 1535035247}
   - {fileID: 1704249637}
+  - {fileID: 1535035247}
   - {fileID: 1593465868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
