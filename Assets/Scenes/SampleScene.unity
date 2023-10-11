@@ -2144,6 +2144,7 @@ RectTransform:
   - {fileID: 165137468}
   - {fileID: 556937818}
   - {fileID: 133774544}
+  - {fileID: 1332575302}
   m_Father: {fileID: 2103582526}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2176,7 +2177,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332575301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2185,7 +2186,7 @@ RectTransform:
   - {fileID: 78433712}
   - {fileID: 1068114182}
   - {fileID: 1597502645}
-  m_Father: {fileID: 2103582526}
+  m_Father: {fileID: 1079411880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4301,7 +4302,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1332575302}
   - {fileID: 1079411880}
   - {fileID: 1535035247}
   - {fileID: 1704249637}
@@ -4373,6 +4373,18 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.84313726
       objectReference: {fileID: 0}
+    - target: {fileID: 2555979441353173553, guid: 7dd09d9b4acf00344963d21ad899ecae, type: 3}
+      propertyPath: PlayerClass.magicText
+      value: 
+      objectReference: {fileID: 1872042748}
+    - target: {fileID: 2555979441353173553, guid: 7dd09d9b4acf00344963d21ad899ecae, type: 3}
+      propertyPath: PlayerClass.mightText
+      value: 
+      objectReference: {fileID: 1900107584}
+    - target: {fileID: 2555979441353173553, guid: 7dd09d9b4acf00344963d21ad899ecae, type: 3}
+      propertyPath: PlayerClass.staminaText
+      value: 
+      objectReference: {fileID: 1874423789}
     - target: {fileID: 6340687091638449441, guid: 7dd09d9b4acf00344963d21ad899ecae, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -4449,6 +4461,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magician
       objectReference: {fileID: 0}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: PlayerClass.stamina
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: PlayerClass.magicText
+      value: 
+      objectReference: {fileID: 133774545}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: PlayerClass.mightText
+      value: 
+      objectReference: {fileID: 556937819}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: PlayerClass.staminaText
+      value: 
+      objectReference: {fileID: 165137469}
     - target: {fileID: 8395602464670599325, guid: 50f6db4076d378b418dce10976b008de, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -4525,6 +4553,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 329632507561367707, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
+      propertyPath: PlayerClass.magicText
+      value: 
+      objectReference: {fileID: 1947583418}
+    - target: {fileID: 329632507561367707, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
+      propertyPath: PlayerClass.mightText
+      value: 
+      objectReference: {fileID: 875667098}
+    - target: {fileID: 329632507561367707, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
+      propertyPath: PlayerClass.staminaText
+      value: 
+      objectReference: {fileID: 128212024}
     - target: {fileID: 2392269603728804543, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -4669,6 +4709,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thief
       objectReference: {fileID: 0}
+    - target: {fileID: 8494088237619407867, guid: fbfd563a4b5ef744b800de6564fdb740, type: 3}
+      propertyPath: PlayerClass.magicText
+      value: 
+      objectReference: {fileID: 1815642188}
+    - target: {fileID: 8494088237619407867, guid: fbfd563a4b5ef744b800de6564fdb740, type: 3}
+      propertyPath: PlayerClass.mightText
+      value: 
+      objectReference: {fileID: 921343608}
+    - target: {fileID: 8494088237619407867, guid: fbfd563a4b5ef744b800de6564fdb740, type: 3}
+      propertyPath: PlayerClass.staminaText
+      value: 
+      objectReference: {fileID: 244779887}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

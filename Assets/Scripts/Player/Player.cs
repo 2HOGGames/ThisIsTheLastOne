@@ -1,12 +1,16 @@
 using System.Linq;
 using UnityEngine;
-
+using TMPro;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class Player
 {
     public string name;
     public int stamina, magic, might, diceAmount;
+    public TextMeshProUGUI staminaText;
+    public TextMeshProUGUI mightText;
+    public TextMeshProUGUI magicText;
 
     public void heal(int healAmount)
     {
@@ -16,5 +20,4 @@ public class Player
     {
         stamina -= damage;
     }
-
 }
