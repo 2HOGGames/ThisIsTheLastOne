@@ -12,7 +12,7 @@ public class gameManager : MonoBehaviour
 
     public GameObject[] players = new GameObject[4];
     
-    public int currentPlayer;
+    public int currentPlayer = 0;
     private int[] newCards = new int[2];
     private int[] challengeInfo = new int[3];
     [SerializeField]private int[] playerRolls = new int [4];
@@ -74,12 +74,21 @@ public class gameManager : MonoBehaviour
     }
     public void GameLoop()
     {
-
+        Debug.Log("space");
         if(currentPlayer < 4)
         {
-            Debug.Log(currentPlayer);
+            Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
+            playerRolls[currentPlayer] = gameController.Roll();
             currentPlayer++;
-        }else if(currentPlayer == 3)
+        }
+        if(currentPlayer == 4)
+        {
+            for(int i = 0; i <= 3; i++)
+            {
+                Debug.Log(playerRolls[i]);
+            }
+            currentPlayer = 0;
+        }
         
 
 
