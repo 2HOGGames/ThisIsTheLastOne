@@ -57,20 +57,22 @@ public class gameManager : MonoBehaviour
     }
     public void GameLoop()
     {
-        //Debug.Log("space");
-        if(currentPlayer < 4)
+        if (!selectingRoom)
         {
-            //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
-            playerRolls[currentPlayer] = gameController.Roll();
-            currentPlayer++;
+            //Debug.Log("space");
+            if (currentPlayer < 4)
+            {
+                //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
+                playerRolls[currentPlayer] = gameController.Roll();
+                currentPlayer++;
+            }
+            if (currentPlayer == 4)
+            {
+                SortResults();
+                CheckWinRoom();
+                currentPlayer = 0;
+            }
         }
-        if(currentPlayer == 4)
-        {
-            SortResults();
-            CheckWinRoom();
-            currentPlayer = 0;
-        }
-        
 
 
 
@@ -126,6 +128,10 @@ public class gameManager : MonoBehaviour
                 if(playerRolls[i] < challengeInfo[0])
                 {
                     Debug.Log("player " + sortingArray[i] + "failed the challenge");
+                }
+                else
+                {
+                    Debug.Log("player " + sortingArray[i] + "Passed the challenge");
                 }
 
             }
