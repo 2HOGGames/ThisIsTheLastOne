@@ -165,6 +165,11 @@ RectTransform:
   m_AnchoredPosition: {x: -721.8546, y: -434.3}
   m_SizeDelta: {x: 407.6908, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &176143664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5734196577801084712, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
+  m_PrefabInstance: {fileID: 1330570898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &204591188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,6 +371,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &248276107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 595434621212684885, guid: 7dd09d9b4acf00344963d21ad899ecae, type: 3}
+  m_PrefabInstance: {fileID: 204591188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &266851528
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,10 +3956,10 @@ MonoBehaviour:
   challengeDeck: {fileID: 1095993244}
   gameController: {fileID: 1828452473}
   players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2000178006}
+  - {fileID: 248276107}
+  - {fileID: 1903112917}
+  - {fileID: 176143664}
   currentPlayer: 0
   playerRolls: 00000000000000000000000000000000
   points: 00000000000000000000000000000000
@@ -3965,6 +3975,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1372e4fdabbec748af16a03c2562945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1903112917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7195525988756229315, guid: fbfd563a4b5ef744b800de6564fdb740, type: 3}
+  m_PrefabInstance: {fileID: 277738023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1924818307
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,12 +4500,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998227257}
   m_CullTransparentMesh: 1
+--- !u!1 &2000178006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1250124467455442798, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+  m_PrefabInstance: {fileID: 1458177110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2000178007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
   m_PrefabInstance: {fileID: 1458177110}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2000178006}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8efbc7c30ab8d32448d17062b52cdaf9, type: 3}

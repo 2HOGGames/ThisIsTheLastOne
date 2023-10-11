@@ -9,6 +9,8 @@ public class gameManager : MonoBehaviour
     public ChallengeDeck challengeDeck;//chellenge deck object
     public GameController gameController;//game controller object
 
+   
+
 
     public GameObject[] players = new GameObject[4];//players
     
@@ -28,8 +30,9 @@ public class gameManager : MonoBehaviour
     private int chosenRoom, discardedRoom;//room chosen and room discarded
 
     private bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
-    
+    private bool alreadyRolling = false;
 
+    int givingPoint = 3;
     private int numRoomCompleted;
 
     void Awake()
@@ -44,7 +47,7 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
-
+        
         //Commented this out so the game owuld run idk what happend......
         //chosenRoom = deckShuffler.firstCard();
         chosenRoom = 0;
@@ -59,18 +62,25 @@ public class gameManager : MonoBehaviour
     {
         if (!selectingRoom)
         {
-            //Debug.Log("space");
-            if (currentPlayer < 4)
+            if (!alreadyRolling)
             {
-                //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
-                playerRolls[currentPlayer] = gameController.Roll();
-                currentPlayer++;
-            }
-            if (currentPlayer == 4)
-            {
-                SortResults();
-                CheckWinRoom();
-                currentPlayer = 0;
+                alreadyRolling = true;
+                //Debug.Log("space");
+                if (currentPlayer < 4)
+                {
+                    //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
+                    playerRolls[currentPlayer] = gameController.Roll();
+                    currentPlayer++;
+                }
+
+                if (currentPlayer == 4)
+                {
+                    selectingRoom = true;
+                    SortResults();
+                    CheckWinRoom();
+                    currentPlayer = 0;
+                }
+                alreadyRolling = false;
             }
         }
 
@@ -125,19 +135,32 @@ public class gameManager : MonoBehaviour
         {
             for (int i = 0; i <= 3; i++)
             {
-                if(playerRolls[i] < challengeInfo[0])
+                if(playerRolls[i] < 5)//player failed
                 {
-                    Debug.Log("player " + sortingArray[i] + "failed the challenge");
+                    switch (sortingArray[i])
+                    {
+                        case 0:
+                            
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                    }
                 }
-                else
+                else//player won
                 {
-                    Debug.Log("player " + sortingArray[i] + "Passed the challenge");
+                    points[sortingArray[i] - 1] += givingPoint;
+                    givingPoint--;
                 }
 
             }
+            givingPoint = 3;
         }
 
-        
+        selectingRoom = false;
         
 
     }
