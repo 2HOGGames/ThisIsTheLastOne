@@ -14,6 +14,8 @@ public class Magician : MonoBehaviour
     [SerializeField] private Sprite[] dieSprites;
     [SerializeField] private GameObject MagicianAnim;
 
+    private bool UsingMight;
+
     private void Awake()
     {
         PlayerClass.mightText.text = "Might\n" + PlayerClass.might;
@@ -53,6 +55,29 @@ public class Magician : MonoBehaviour
             magicianAnimator.SetTrigger("Roll2");
         }
 
-        return PlayerClass.result.Min() + PlayerClass.magic;
+
+        if (UsingMight)
+            return PlayerClass.result.Min() + PlayerClass.might;
+        else
+            return PlayerClass.result.Min() + PlayerClass.magic;
+    }
+
+
+    private void OnEnable()
+    {
+        EventManager.SwitchRoomStatType += ChangeBool;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.SwitchRoomStatType -= ChangeBool;
+    }
+
+    private void ChangeBool()
+    {
+        if (UsingMight)
+            UsingMight = false;
+        else
+            UsingMight = true;
     }
 }
