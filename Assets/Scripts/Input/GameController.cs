@@ -8,15 +8,17 @@ public class GameController : MonoBehaviour
     private bool currentlyPaused;
     private gameManager gameManager;
 
-    private RollTheDice rollTheDice;
-
-    int currentPlayer;
+    //Players
+    private Magician magician;
+    private Knight knight;
+    private Thief thief;
+    private Human human;
 
     private void Awake()
     {
         Inputs.Init(this);
-        rollTheDice = gameObject.GetComponent<RollTheDice>();
-        gameManager = gameObject.GetComponent<gameManager>();
+        InitScripts();
+        
     }
     public void Pause()
     {
@@ -36,22 +38,28 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Test");
     }
-
     public int Roll()
     {
-        /*switch (gameManager.currentPlayer)
+        switch (gameManager.currentPlayer)
         {
             case 0:
-                return rollTheDice.RollMagician();
+                return magician.RollMagician();
             case 1:
-                return rollTheDice.RollKnight();
+                return knight.RollKnight();
             case 2:
-                return rollTheDice.RollThief();
+                return thief.RollThief();
             case 3:
-                return rollTheDice.RollHuman();
+                return human.RollHuman();
         }
-        return 0;*/
-        return rollTheDice.RollMagician();
+        return 0;
     }
-
+    private void InitScripts()
+    {
+        gameManager = gameObject.GetComponent<gameManager>();
+        gameManager = GetComponent<gameManager>();
+        magician = FindObjectOfType<Magician>();
+        knight = FindObjectOfType<Knight>();
+        thief = FindObjectOfType<Thief>();
+        human = FindObjectOfType<Human>();
+    }
 }

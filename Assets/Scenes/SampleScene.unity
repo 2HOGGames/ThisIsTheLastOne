@@ -2152,6 +2152,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1283754534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+  m_PrefabInstance: {fileID: 2740075685834564049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efbc7c30ab8d32448d17062b52cdaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1332575301
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,11 +2234,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1332575301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00eeac14db9ceb3478e8052829e74199, type: 3}
+  m_Script: {fileID: 11500000, guid: 11ec926640fc4fc44b225c36783ea542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollTheDice: {fileID: 1986637970}
-  statText: {fileID: 1597502646}
+  statNumber: {fileID: 1597502646}
+  magician: {fileID: 1283754534}
 --- !u!1 &1358986928
 GameObject:
   m_ObjectHideFlags: 0
@@ -4096,20 +4107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8552b55b4d71da142bfcfdad7f7554cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  result: 0000000000000000
-  statNumber: {fileID: 1597502646}
-  magicianAnimator: {fileID: 1332575303}
-  die1: {fileID: 1672707830}
-  die2: {fileID: 78433713}
-  dieSprites:
-  - {fileID: 21300000, guid: 7c8d889590d6faf47964b1dbb0ac6647, type: 3}
-  - {fileID: 21300000, guid: 4a9f866dc3e870c4db4adb8bec75e16e, type: 3}
-  - {fileID: 21300000, guid: c162221956f87ff4e8dda0b4a6878ffe, type: 3}
-  - {fileID: 21300000, guid: d7169d2b01e9a12449284aa145eb7c3f, type: 3}
-  - {fileID: 21300000, guid: b430259237f0cd44da0f02b1a81fab61, type: 3}
-  - {fileID: 21300000, guid: 947b2466a7498124d959249a993d6b74, type: 3}
-  dieSprites2: []
-  MagicianAnim: {fileID: 1332575301}
 --- !u!1 &1991981573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7231973131376867372, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
@@ -4464,6 +4461,26 @@ PrefabInstance:
       value: Magician
       objectReference: {fileID: 0}
     - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: die1
+      value: 
+      objectReference: {fileID: 1672707830}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: die2
+      value: 
+      objectReference: {fileID: 78433713}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: statNumber
+      value: 
+      objectReference: {fileID: 1597502646}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: MagicianAnim
+      value: 
+      objectReference: {fileID: 1332575301}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: magicianAnimator
+      value: 
+      objectReference: {fileID: 1332575303}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
       propertyPath: PlayerClass.stamina
       value: 3
       objectReference: {fileID: 0}
@@ -4476,9 +4493,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 556937819}
     - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
       propertyPath: PlayerClass.staminaText
       value: 
       objectReference: {fileID: 165137469}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c8d889590d6faf47964b1dbb0ac6647, type: 3}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a9f866dc3e870c4db4adb8bec75e16e, type: 3}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: c162221956f87ff4e8dda0b4a6878ffe, type: 3}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: d7169d2b01e9a12449284aa145eb7c3f, type: 3}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: b430259237f0cd44da0f02b1a81fab61, type: 3}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: dieSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: 947b2466a7498124d959249a993d6b74, type: 3}
+    - target: {fileID: 4757799813067468869, guid: 50f6db4076d378b418dce10976b008de, type: 3}
+      propertyPath: PlayerClass.result.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8395602464670599325, guid: 50f6db4076d378b418dce10976b008de, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

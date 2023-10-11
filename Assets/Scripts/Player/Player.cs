@@ -8,6 +8,7 @@ public class Player
 {
     public string name;
     public int stamina, magic, might, diceAmount;
+    public int[] result;
     public TextMeshProUGUI staminaText;
     public TextMeshProUGUI mightText;
     public TextMeshProUGUI magicText;

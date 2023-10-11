@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Knight : MonoBehaviour
+public class Human : MonoBehaviour
 {
     public Player PlayerClass;
 
@@ -12,5 +12,17 @@ public class Knight : MonoBehaviour
     private void Update()
     {
         PlayerClass.staminaText.text = "Stamina\n" + PlayerClass.stamina;
+    }
+
+    public int RollHuman()
+    {
+        PlayerClass.result[0] = Random.Range(1, 7);
+
+        if (PlayerClass.result[0] > 3)
+            PlayerClass.heal(2);
+        else
+            PlayerClass.heal(1);
+
+        return PlayerClass.result[0];
     }
 }
