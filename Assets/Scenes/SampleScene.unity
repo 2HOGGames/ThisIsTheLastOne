@@ -4093,7 +4093,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  currentPlayer: 1
+  currentPlayer: 0
+  playerRolls: 00000000000000000000000000000000
+  points: 00000000000000000000000000000000
 --- !u!1 &1991981573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7231973131376867372, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}
