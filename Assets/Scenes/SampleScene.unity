@@ -2169,7 +2169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1332575302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4108,6 +4108,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d7169d2b01e9a12449284aa145eb7c3f, type: 3}
   - {fileID: 21300000, guid: b430259237f0cd44da0f02b1a81fab61, type: 3}
   - {fileID: 21300000, guid: 947b2466a7498124d959249a993d6b74, type: 3}
+  dieSprites2: []
+  MagicianAnim: {fileID: 1332575301}
 --- !u!1 &1991981573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7231973131376867372, guid: b3120c23f7ec8604ea3c5711626a12b2, type: 3}

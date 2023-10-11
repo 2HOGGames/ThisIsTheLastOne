@@ -25,6 +25,8 @@ public class RollTheDice : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image die1;
     [SerializeField] private UnityEngine.UI.Image die2;
     [SerializeField] private Sprite[] dieSprites;
+    [SerializeField] private Sprite[] dieSprites2;
+    [SerializeField] private GameObject MagicianAnim;
 
     private void Awake()
     {
@@ -34,6 +36,8 @@ public class RollTheDice : MonoBehaviour
 
     public int RollMagician()
     {
+        MagicianAnim.SetActive(true);
+        magicianAnimator.SetBool("LuckySeven", false);
         result[0] = Random.Range(1, 7);
         result[1] = Random.Range(1, 7);
 
