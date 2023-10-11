@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     private int[] challengeInfo = new int[3];
     [SerializeField]private int[] playerRolls = new int [4];
    [SerializeField] private int[] points = new int[4];
+    private int[] sortingArray = new int[] { 1, 2, 3, 4 };
     private int chosenRoom, discardedRoom;
     private bool selectingRoom = false;
     private bool roomCompleted = false;
@@ -35,9 +36,10 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
-        
+
         //Commented this out so the game owuld run idk what happend......
         //chosenRoom = deckShuffler.firstCard();
+        chosenRoom = 0;
         roomCompleted = false;
         
     }
@@ -74,19 +76,16 @@ public class gameManager : MonoBehaviour
     }
     public void GameLoop()
     {
-        Debug.Log("space");
+        //Debug.Log("space");
         if(currentPlayer < 4)
         {
-            Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
+            //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
             playerRolls[currentPlayer] = gameController.Roll();
             currentPlayer++;
         }
         if(currentPlayer == 4)
         {
-            for(int i = 0; i <= 3; i++)
-            {
-                Debug.Log(playerRolls[i]);
-            }
+            SortResults();
             currentPlayer = 0;
         }
         
@@ -95,19 +94,38 @@ public class gameManager : MonoBehaviour
 
 
     }
-
-    /*private void activeChallenge()
+    private void SortResults()
     {
-        while (!roomCompleted)
+        for (int i = 0; i <= 3; i++)
         {
-            for(int i = 0; i <= 3; i++)
+            for (int k = 0; k <= 3; k++)
             {
-               
-                
-            }
+                if (playerRolls[i] > playerRolls[k])
+                {
+                    int temp = playerRolls[i];
+                    playerRolls[i] = playerRolls[k];
+                    playerRolls[k] = temp;
 
+                    temp = sortingArray[i];
+                    sortingArray[i] = sortingArray[k];
+                    sortingArray[k] = temp;
+                }
+
+
+            }
         }
-    }*/
+        for(int i = 0; i <= 3; i++)
+        {
+            Debug.Log("Player " + sortingArray[i] + " rolled " + playerRolls[i]);
+        }
+    }
+   private void CheckWinRoom()
+    {
+        challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
+
+        
+
+    }
 
 
 
