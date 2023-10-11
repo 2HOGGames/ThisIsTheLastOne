@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
     private int LuckRoll()
     {
         var roll1 = Random.Range(1,7);
-        var roll2 = Random.Range(1, 7);
+        var roll2 = Random.Range(1,7);
 
         return roll1 + roll2;
     }
