@@ -10,7 +10,7 @@ public class ButtonInput : MonoBehaviour
     [SerializeField] private int buttonNum;
     public void ButtonSelected()
     {
-        if (_manager.waitForInput)
+        if (_manager.waitForInput && _manager.selectingRoom) 
         {
             Debug.Log("button " + buttonNum + " pressed");
 

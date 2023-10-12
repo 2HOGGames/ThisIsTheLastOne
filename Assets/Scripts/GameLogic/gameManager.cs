@@ -32,7 +32,7 @@ public class gameManager : MonoBehaviour
 
     private int chosenRoom, discardedRoom;//room chosen and room discarded
 
-    private bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
+    public bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
     private bool alreadyRolling = false;
     public bool waitForInput = true;
 
@@ -51,10 +51,11 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
-        //buttonCanvas.SetActive(false);
+        buttonCanvas.SetActive(false);
         ThiefButton.SetActive(false);
         //Commented this out so the game owuld run idk what happend......
         chosenRoom = deckShuffler.firstCard();
+        Debug.Log("first card is " + chosenRoom);
         chosenRoom = 0;
         
         
@@ -88,7 +89,7 @@ public class gameManager : MonoBehaviour
                     
                     SortResults();
                     CheckWinRoom();
-                    //buttonCanvas.SetActive(true);
+                    buttonCanvas.SetActive(true);
                     checkDrawnCard();
                     waitForInput = true;
                     currentPlayer = 0;
@@ -124,7 +125,7 @@ public class gameManager : MonoBehaviour
         }
         for(int i = 0; i <= 3; i++)
         {
-            Debug.Log("Player " + sortingArray[i] + " rolled " + playerRolls[i]);
+            //Debug.Log("Player " + sortingArray[i] + " rolled " + playerRolls[i]);
         }
     }
    private void CheckWinRoom()
@@ -206,7 +207,7 @@ public class gameManager : MonoBehaviour
                 Debug.Log("discarded card 1");
             }
 
-            //buttonCanvas.SetActive(false);
+            buttonCanvas.SetActive(false);
             deckShuffler.ReformDeck(discardedRoom);
             discardedRoom = 0;
 

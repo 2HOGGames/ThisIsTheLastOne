@@ -9,7 +9,7 @@ public class DeckShuffler : MonoBehaviour
     [SerializeField] private int[] freeSpaces = new int[6];//stores chosen spaces
     int randomNum;
     bool spaceTaken = false;
-    private int CardsDrawn = 0;
+    public int CardsDrawn = 0;
 
     public int card1, card2;
 
@@ -90,6 +90,6 @@ public class DeckShuffler : MonoBehaviour
 
         }
         deck[(deck.Length - 1) - CardsDrawn] = nonChosen;
-        CardsDrawn++;
+        //CardsDrawn++;
     }
 }
