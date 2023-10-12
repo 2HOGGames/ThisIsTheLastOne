@@ -5,19 +5,21 @@ using UnityEngine;
 public class ButtonInput : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private gameManager manager;
 
-    private void Awake()
+    [SerializeField]private gameManager _manager;
+    [SerializeField] private int buttonNum;
+    public void ButtonSelected()
     {
-        manager = gameObject.GetComponent<gameManager>();
-        manager = GetComponent<gameManager>();
+        if (_manager.waitForInput)
+        {
+            Debug.Log("button " + buttonNum + " pressed");
+
+            _manager.waitForInput = false;
+            _manager.SelectionMade(buttonNum);
+        }
+        
     }
-    public void ButtonOneSelected()
-    {
-        manager.SelectionMade(1);  
-    }
-    public void ButtonTwoSelected()
-    {
-        manager.SelectionMade(2);
-    }
+    
+
+
 }

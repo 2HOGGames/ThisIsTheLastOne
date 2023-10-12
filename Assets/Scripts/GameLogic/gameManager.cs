@@ -11,6 +11,7 @@ public class gameManager : MonoBehaviour
     public GameController gameController;//game controller object
 
     public GameObject buttonCanvas;
+    public GameObject ThiefButton;
    
 
 
@@ -21,7 +22,7 @@ public class gameManager : MonoBehaviour
 
     private int[] newCards = new int[2];//current cards waiting to be chosen
 
-    private int[] challengeInfo = new int[3];//the details of the current challenge
+    private int[] challengeInfo = new int[2];//the details of the current challenge
 
     [SerializeField]private int[] playerRolls = new int [4];//what each player rolled
 
@@ -33,6 +34,7 @@ public class gameManager : MonoBehaviour
 
     private bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
     private bool alreadyRolling = false;
+    public bool waitForInput = true;
 
     int givingPoint = 3;
     private int numRoomCompleted;
@@ -49,7 +51,8 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
-        buttonCanvas.SetActive(false);
+        //buttonCanvas.SetActive(false);
+        ThiefButton.SetActive(false);
         //Commented this out so the game owuld run idk what happend......
         chosenRoom = deckShuffler.firstCard();
         chosenRoom = 0;
@@ -72,16 +75,22 @@ public class gameManager : MonoBehaviour
                 {
                     //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
                     playerRolls[currentPlayer] = gameController.Roll();
+                    if (currentPlayer == 3)
+                    {
+
+                    }
                     currentPlayer++;
                 }
 
                 if (currentPlayer == 4)
                 {
                     selectingRoom = true;
+                    
                     SortResults();
                     CheckWinRoom();
-                    buttonCanvas.SetActive(true);
+                    //buttonCanvas.SetActive(true);
                     checkDrawnCard();
+                    waitForInput = true;
                     currentPlayer = 0;
                 }
                 alreadyRolling = false;
@@ -92,6 +101,7 @@ public class gameManager : MonoBehaviour
 
 
     }
+    
     private void SortResults()
     {
         for (int i = 0; i <= 3; i++)
@@ -144,16 +154,16 @@ public class gameManager : MonoBehaviour
                     switch (sortingArray[i])
                     {
                         case 0:
-                            players[0].GetComponent<Magician>().PlayerClass.hurt(challengeInfo[2]);
+                            players[0].GetComponent<Magician>().PlayerClass.hurt(1);
                             break;
                         case 1:
-                            players[1].GetComponent<Knight>().PlayerClass.hurt(challengeInfo[2]);
+                            players[1].GetComponent<Knight>().PlayerClass.hurt(1);
                             break;
                         case 2:
-                            players[2].GetComponent<Thief>().PlayerClass.hurt(challengeInfo[2]);
+                            players[2].GetComponent<Thief>().PlayerClass.hurt(1);
                             break;
                         case 3:
-                            players[3].GetComponent<Human>().PlayerClass.hurt(challengeInfo[2]);
+                            players[3].GetComponent<Human>().PlayerClass.hurt(1);
                             break;
                     }
                 }
@@ -176,28 +186,32 @@ public class gameManager : MonoBehaviour
         }
     }
 
-
+    
     public void SelectionMade(int selection)
     {
 
-        if(selection == 1)
+        if (selectingRoom && !waitForInput)
         {
-            chosenRoom = newCards[0];
-            discardedRoom = newCards[1];
-            Debug.Log("discarded card 2");
-        }
-        else
-        {
-            chosenRoom = newCards[1];
-            discardedRoom = newCards[0];
-            Debug.Log("discarded card 1");
-        }
+            waitForInput = true;
+            if (selection == 1)
+            {
+                chosenRoom = newCards[0];
+                discardedRoom = newCards[1];
+                Debug.Log("discarded card 2");
+            }
+            else if (selection == 2)
+            {
+                chosenRoom = newCards[1];
+                discardedRoom = newCards[0];
+                Debug.Log("discarded card 1");
+            }
 
-        buttonCanvas.SetActive(false);
-        deckShuffler.ReformDeck(discardedRoom);
-        discardedRoom = 0;
-        selectingRoom = false;
+            //buttonCanvas.SetActive(false);
+            deckShuffler.ReformDeck(discardedRoom);
+            discardedRoom = 0;
 
+            selectingRoom = false;
+        }
     }
 
     private void checkDrawnCard()

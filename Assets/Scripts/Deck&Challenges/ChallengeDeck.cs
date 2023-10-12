@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChallengeDeck : MonoBehaviour
 {
-    int[] roomChallenge = new int[3];
-    int targetNum, stat, numOfRolls, loserPenalty;
+    int[] roomChallenge = new int[2];
+    int targetNum, loserPenalty;
     //target num is the number needed to roll to win the room
     //stat is the stat being rolled 1 might, 2 magic, 3 none
     //numOfRolls is how many attempts each player gets
@@ -16,7 +16,7 @@ public class ChallengeDeck : MonoBehaviour
         {
             case 0:
                 targetNum = 12;
-                stat = 1;
+                
                 
                 loserPenalty = -1;
                 break;
@@ -37,8 +37,7 @@ public class ChallengeDeck : MonoBehaviour
                 break;
         }
         roomChallenge[0] = targetNum;
-        roomChallenge[1] = stat;
-        roomChallenge[2] = loserPenalty;
+        roomChallenge[1] = loserPenalty;
         return (roomChallenge);
     }
 
