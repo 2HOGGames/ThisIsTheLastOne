@@ -78,7 +78,7 @@ public class gameManager : MonoBehaviour
                     playerRolls[currentPlayer] = gameController.Roll();
                     if (currentPlayer == 3)
                     {
-
+                        ThiefButton.SetActive(true);
                     }
                     currentPlayer++;
                 }

@@ -54,8 +54,7 @@ public class GameController : MonoBehaviour
                 return thief.RollThief();
             case 3:
                 return human.RollHuman();
-            case 4:
-                return LuckRoll();
+            
         }
         return 0;
     }
@@ -69,7 +68,7 @@ public class GameController : MonoBehaviour
         human = FindObjectOfType<Human>();
     }
 
-    private int LuckRoll()
+    public int LuckRoll()
     {
         var roll1 = Random.Range(1,7);
         var roll2 = Random.Range(1,7);
