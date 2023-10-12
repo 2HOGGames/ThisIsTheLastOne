@@ -26,6 +26,9 @@ public static class Inputs
     {
         _actions.GameControls.Enable();
     }
-
+    public static void MenuMode()
+    {
+        _actions.GameControls.Disable();
+    }
 
 }

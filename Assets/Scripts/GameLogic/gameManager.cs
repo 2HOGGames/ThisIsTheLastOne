@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
     public  DeckShuffler deckShuffler;//deck shuffling object
     public ChallengeDeck challengeDeck;//chellenge deck object
     public GameController gameController;//game controller object
+    
 
     public GameObject buttonCanvas;
     public GameObject ThiefButton;
@@ -35,6 +36,8 @@ public class gameManager : MonoBehaviour
     public bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
     private bool alreadyRolling = false;
     public bool waitForInput = true;
+    public bool waitForThief = false;
+    //public bool thiefChoice;
 
     int givingPoint = 3;
     private int numRoomCompleted;
@@ -66,43 +69,64 @@ public class gameManager : MonoBehaviour
     }
     public void GameLoop()
     {
+        
         if (!selectingRoom)
         {
-            if (!alreadyRolling)
-            {
-                alreadyRolling = true;
-                //Debug.Log("space");
-                if (currentPlayer < 4)
+            
+                if (!alreadyRolling)
                 {
-                    //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
-                    playerRolls[currentPlayer] = gameController.Roll();
-                    if (currentPlayer == 3)
+                    alreadyRolling = true;
+                    //Debug.Log("space");
+                    if (currentPlayer < 4 )
                     {
-                        ThiefButton.SetActive(true);
+                        //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
+                        playerRolls[currentPlayer] = gameController.Roll();
+                        if (currentPlayer == 2)
+                        {
+                            waitForThief = true;
+                            Inputs.MenuMode();
+                            Debug.Log("thief may reroll");
+                            ThiefButton.SetActive(true);
+                            
+                        }
+                        currentPlayer++;
                     }
-                    currentPlayer++;
-                }
 
-                if (currentPlayer == 4)
-                {
-                    selectingRoom = true;
-                    
-                    SortResults();
-                    CheckWinRoom();
-                    buttonCanvas.SetActive(true);
-                    checkDrawnCard();
-                    waitForInput = true;
-                    currentPlayer = 0;
+                    if (currentPlayer == 4)
+                    {
+                        selectingRoom = true;
+
+                        SortResults();
+                        CheckWinRoom();
+                        buttonCanvas.SetActive(true);
+                        checkDrawnCard();
+                        waitForInput = true;
+                        currentPlayer = 0;
+                    }
+                    alreadyRolling = false;
                 }
-                alreadyRolling = false;
-            }
+            
         }
 
 
 
 
     }
-    
+    public void ThiefMenuOff()
+    {
+        ThiefButton.SetActive(false);
+    }
+
+    public void ThiefReroll()
+    {
+        currentPlayer = 2;
+        playerRolls[currentPlayer] = gameController.Roll();
+        
+        ThiefButton.SetActive(false);
+        currentPlayer++;
+    }
+
+
     private void SortResults()
     {
         for (int i = 0; i <= 3; i++)
@@ -182,7 +206,7 @@ public class gameManager : MonoBehaviour
         
         for(int i = 0; i <= 3; i++)
         {
-            playerRolls[i] = 0;
+           // playerRolls[i] = 0;
             sortingArray[i] = i +1;
         }
     }

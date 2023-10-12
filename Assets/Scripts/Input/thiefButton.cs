@@ -6,15 +6,22 @@ public class thiefButton : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private int wantToReroll;
+    [SerializeField] private gameManager manager;
     public void ThiefPressed()
     {
-        if(wantToReroll == 1)
-        {
-
-        }
+        Debug.Log("buttonPressed");
+        
+            manager.waitForThief = false;
+            if (wantToReroll == 1)
+            {
+            manager.ThiefReroll();
+            }
         else
         {
-
+            manager.ThiefMenuOff();
         }
+            
+        Inputs.PlayMode();
+        
     }
 }

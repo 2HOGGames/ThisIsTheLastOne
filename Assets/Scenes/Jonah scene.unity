@@ -1923,6 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck: 000000000000000000000000000000000000000000000000
   freeSpaces: 000000000000000000000000000000000000000000000000
+  CardsDrawn: 0
   card1: 0
   card2: 0
 --- !u!4 &1095993243
@@ -3965,6 +3966,9 @@ MonoBehaviour:
   currentPlayer: 0
   playerRolls: 00000000000000000000000000000000
   points: 00000000000000000000000000000000
+  selectingRoom: 0
+  waitForInput: 1
+  waitForThief: 0
 --- !u!114 &1828452473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4984,10 +4988,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 4c59bb43f3f423b4081a3eb1b99707de, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 7042757332798734908}
+        m_TargetAssemblyTypeName: thiefButton, Assembly-CSharp
+        m_MethodName: ThiefPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5125,9 +5129,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonInput, Assembly-CSharp
-        m_MethodName: ThiefDecline
+      - m_Target: {fileID: 8724886942290149226}
+        m_TargetAssemblyTypeName: thiefButton, Assembly-CSharp
+        m_MethodName: ThiefPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5566,6 +5570,7 @@ GameObject:
   - component: {fileID: 8724886942290149225}
   - component: {fileID: 5301150795971452274}
   - component: {fileID: 2574951834279435075}
+  - component: {fileID: 8724886942290149226}
   m_Layer: 5
   m_Name: Decline
   m_TagString: Untagged
@@ -5854,6 +5859,7 @@ GameObject:
   - component: {fileID: 934354501495405806}
   - component: {fileID: 3758889516832901073}
   - component: {fileID: 798245679164524177}
+  - component: {fileID: 7042757332798734908}
   m_Layer: 5
   m_Name: Accept
   m_TagString: Untagged
@@ -5861,6 +5867,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7042757332798734908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042757332798734907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e8246baf1663b46903417ef246933f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wantToReroll: 1
+  manager: {fileID: 1828452472}
 --- !u!114 &7328665607397688724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5881,7 +5901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Card 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe4af123725dd8a4a8dd0428544a9a73, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: fe4af123725dd8a4a8dd0428544a9a73, type: 2}
@@ -5988,7 +6008,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Card 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe4af123725dd8a4a8dd0428544a9a73, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: fe4af123725dd8a4a8dd0428544a9a73, type: 2}
@@ -6123,6 +6143,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4452522630835108118}
   m_CullTransparentMesh: 1
+--- !u!114 &8724886942290149226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452522630835108118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e8246baf1663b46903417ef246933f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wantToReroll: 2
+  manager: {fileID: 1828452472}
 --- !u!223 &8829907511257573067
 Canvas:
   m_ObjectHideFlags: 0
