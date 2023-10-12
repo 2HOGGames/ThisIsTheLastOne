@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class gameManager : MonoBehaviour
     public ChallengeDeck challengeDeck;//chellenge deck object
     public GameController gameController;//game controller object
 
+    public GameObject buttonCanvas;
    
 
 
@@ -47,9 +49,9 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
-        
+        buttonCanvas.SetActive(false);
         //Commented this out so the game owuld run idk what happend......
-        //chosenRoom = deckShuffler.firstCard();
+        chosenRoom = deckShuffler.firstCard();
         chosenRoom = 0;
         
         
@@ -78,6 +80,7 @@ public class gameManager : MonoBehaviour
                     selectingRoom = true;
                     SortResults();
                     CheckWinRoom();
+                    buttonCanvas.SetActive(true);
                     checkDrawnCard();
                     currentPlayer = 0;
                 }
@@ -166,32 +169,40 @@ public class gameManager : MonoBehaviour
 
         
         
-
+        for(int i = 0; i <= 3; i++)
+        {
+            playerRolls[i] = 0;
+            sortingArray[i] = i +1;
+        }
     }
 
 
+    public void SelectionMade(int selection)
+    {
 
+        if(selection == 1)
+        {
+            chosenRoom = newCards[0];
+            discardedRoom = newCards[1];
+            Debug.Log("discarded card 2");
+        }
+        else
+        {
+            chosenRoom = newCards[1];
+            discardedRoom = newCards[0];
+            Debug.Log("discarded card 1");
+        }
+
+        buttonCanvas.SetActive(false);
+        deckShuffler.ReformDeck(discardedRoom);
+        discardedRoom = 0;
+        selectingRoom = false;
+
+    }
 
     private void checkDrawnCard()
     {
         newCards = deckShuffler.DrawnCards();
-
-        while (selectingRoom)
-        {
-
-            if (Input.GetButtonDown("1"))
-            {
-                chosenRoom = newCards[0];
-                discardedRoom = newCards[1];
-                selectingRoom = false;
-            }
-            if (Input.GetButtonDown("2"))
-            {
-                chosenRoom = newCards[1];
-                discardedRoom = newCards[0];
-                selectingRoom = false;
-            }
-
-        }
+        
     }
 }
