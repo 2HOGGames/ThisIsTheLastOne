@@ -70,6 +70,7 @@ public class GameController : MonoBehaviour
 
     public int LuckRoll()
     {
+        Debug.Log("luck roller");
         var roll1 = Random.Range(1,7);
         var roll2 = Random.Range(1,7);
 

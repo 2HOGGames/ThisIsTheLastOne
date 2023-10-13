@@ -15,9 +15,8 @@ public class ChallengeDeck : MonoBehaviour
         switch (roomNum)
         {
             case 0:
+                //combat room
                 targetNum = 12;
-                
-                
                 loserPenalty = -1;
                 break;
             case 1:
@@ -33,7 +32,10 @@ public class ChallengeDeck : MonoBehaviour
                 Debug.Log("challenge 5");
                 break;
             case 5:
+                //luck room
                 Debug.Log("challenge 6");
+                targetNum = 0;
+                loserPenalty = 0;
                 break;
         }
         roomChallenge[0] = targetNum;

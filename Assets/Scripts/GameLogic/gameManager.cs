@@ -59,7 +59,7 @@ public class gameManager : MonoBehaviour
         //Commented this out so the game owuld run idk what happend......
         chosenRoom = deckShuffler.firstCard();
         Debug.Log("first card is " + chosenRoom);
-        chosenRoom = 0;
+        
         
         
     }
@@ -73,38 +73,51 @@ public class gameManager : MonoBehaviour
         if (!selectingRoom)
         {
             
-                if (!alreadyRolling)
+            if (!alreadyRolling)
+            {
+                    
+            alreadyRolling = true;
+            //Debug.Log("space");
+            if (currentPlayer < 4)
+            {
+                //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
+                if (chosenRoom == 5)
                 {
-                    alreadyRolling = true;
-                    //Debug.Log("space");
-                    if (currentPlayer < 4 )
-                    {
-                        //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
-                        playerRolls[currentPlayer] = gameController.Roll();
-                        if (currentPlayer == 2)
-                        {
-                            waitForThief = true;
-                            Inputs.MenuMode();
-                            Debug.Log("thief may reroll");
-                            ThiefButton.SetActive(true);
-                            
-                        }
-                        currentPlayer++;
-                    }
-
-                    if (currentPlayer == 4)
-                    {
-                        selectingRoom = true;
-
-                        SortResults();
-                        CheckWinRoom();
-                        buttonCanvas.SetActive(true);
-                        checkDrawnCard();
-                        waitForInput = true;
-                        currentPlayer = 0;
-                    }
-                    alreadyRolling = false;
+                        //luck room
+                        Debug.Log("Luck roll");
+                    playerRolls[currentPlayer] = gameController.LuckRoll();
                 }
+                else
+                {
+                        Debug.Log("notLuckRoom");
+                    playerRolls[currentPlayer] = gameController.Roll();
+                }
+                if (currentPlayer == 2)
+                {
+                    waitForThief = true;
+                    Inputs.MenuMode();
+                    Debug.Log("thief may reroll");
+                    ThiefButton.SetActive(true);
+
+                }
+                currentPlayer++;
+            }
+
+            if (currentPlayer == 4)
+            {
+                selectingRoom = true;
+
+                SortResults();
+                CheckWinRoom();
+                Inputs.MenuMode();
+                buttonCanvas.SetActive(true);
+                checkDrawnCard();
+                waitForInput = true;
+                currentPlayer = 0;
+            }
+            alreadyRolling = false;
+                    
+            }
             
         }
 
@@ -120,8 +133,14 @@ public class gameManager : MonoBehaviour
     public void ThiefReroll()
     {
         currentPlayer = 2;
-        playerRolls[currentPlayer] = gameController.Roll();
-        
+        if (chosenRoom == 5)
+        {
+            playerRolls[currentPlayer] = gameController.LuckRoll();
+        }
+        else
+        {
+            playerRolls[currentPlayer] = gameController.Roll();
+        }
         ThiefButton.SetActive(false);
         currentPlayer++;
     }
@@ -152,6 +171,10 @@ public class gameManager : MonoBehaviour
             //Debug.Log("Player " + sortingArray[i] + " rolled " + playerRolls[i]);
         }
     }
+    public void TieBreaker()
+    {
+
+    }
    private void CheckWinRoom()
     {
         challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
@@ -174,7 +197,7 @@ public class gameManager : MonoBehaviour
         {
             for (int i = 0; i <= 3; i++)
             {
-                if(playerRolls[i] < 5)//player failed
+                if(playerRolls[i] < challengeInfo[0])//player failed
                 {
                     switch (sortingArray[i])
                     {
@@ -233,9 +256,10 @@ public class gameManager : MonoBehaviour
 
             buttonCanvas.SetActive(false);
             deckShuffler.ReformDeck(discardedRoom);
-            discardedRoom = 0;
+            
 
             selectingRoom = false;
+            Inputs.MenuMode();
         }
     }
 
