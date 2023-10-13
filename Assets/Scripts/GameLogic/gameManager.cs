@@ -13,7 +13,7 @@ public class gameManager : MonoBehaviour
 
     public GameObject buttonCanvas;
     public GameObject ThiefButton;
-
+    public Camera gameCamera;
 
 
     public GameObject[] players = new GameObject[4];//players
@@ -32,6 +32,8 @@ public class gameManager : MonoBehaviour
     private int[] sortingArray = new int[] { 1, 2, 3, 4 };//keeps player rolls position during sorting
 
     private int chosenRoom, discardedRoom;//room chosen and room discarded
+
+    private int nextPos;
 
     public bool selectingRoom = false;//failsafe so things cahnt happen until a room is selected
     private bool alreadyRolling = false;
@@ -106,7 +108,7 @@ public class gameManager : MonoBehaviour
                 currentPlayer++;
             }
 
-            if (currentPlayer == 4)
+            if (currentPlayer == 4 && numRoomCompleted != 5)
             {
                 selectingRoom = true;
 
@@ -117,15 +119,14 @@ public class gameManager : MonoBehaviour
                 checkDrawnCard();
                 waitForInput = true;
                 currentPlayer = 0;
-            }
+            }/*else if(numRoomCompleted == 5)
+                {
+                    EndGame();
+                }*/
             alreadyRolling = false;
                     
             }
             
-        }else if(!selectingRoom && numRoomCompleted == 5)
-        {
-            EndGame();
-
         }
 
 
@@ -280,7 +281,8 @@ public class gameManager : MonoBehaviour
             
 
             selectingRoom = false;
-            
+            nextPos += 8;
+            gameCamera.transform.position = new Vector3(0, nextPos, -10);//moves camera
         }
     }
 
@@ -314,8 +316,7 @@ public class gameManager : MonoBehaviour
             }
         }
         
-        //deckShuffler.ResetDeck();
-        numRoomCompleted = 0;
+       
         for ( int i = 0; i <= 3; i++)
         {
             Debug.Log("player " + sortingArray[i] + "got " + (i+1) + " place with " + points[i]);
@@ -323,8 +324,11 @@ public class gameManager : MonoBehaviour
             playerRolls[i] = 0;
             sortingArray[i] = i + 1;
         }
-        //chosenRoom = deckShuffler.firstCard();
-        //challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
+        deckShuffler.ResetDeck();
+        numRoomCompleted = 0;
+        currentPlayer = 0;
+        chosenRoom = deckShuffler.firstCard();
+        challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
         Inputs.PlayMode();
     }
     

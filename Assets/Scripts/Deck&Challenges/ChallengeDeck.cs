@@ -8,6 +8,9 @@ public class ChallengeDeck : MonoBehaviour
     int[] roomChallenge = new int[2];
     int targetNum, loserPenalty;
     [SerializeField] private EventManager events;
+    [SerializeField] private GameObject room;
+    private int nextSpace;
+    private int goNext;
     
     //target num is the number needed to roll to win the room
     //stat is the stat being rolled 1 might, 2 magic, 3 none
@@ -15,6 +18,11 @@ public class ChallengeDeck : MonoBehaviour
     //loserPenalty is wether or not there is a penalty for being last
    public int[] ChosenRoom(int roomNum)
     {
+        
+        
+        Instantiate(room, new Vector3(0, nextSpace,0), Quaternion.identity);
+        goNext++;
+        nextSpace += 8;
         switch (roomNum)
         {
             case 0:

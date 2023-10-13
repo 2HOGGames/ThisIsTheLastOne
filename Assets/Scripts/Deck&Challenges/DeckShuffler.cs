@@ -24,6 +24,10 @@ public class DeckShuffler : MonoBehaviour
     {
         spaceTaken = false;
         CardsDrawn = 0;
+        foreach(int i in freeSpaces)
+        {
+            freeSpaces[i] = 0;
+        }
         Shuffle();
     }
     public void Shuffle()//shuffles the deck by placing a value from 1-11 in a random index (position in the deck)
