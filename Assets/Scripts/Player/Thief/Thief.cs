@@ -25,7 +25,7 @@ public class Thief : MonoBehaviour
             sum += i;
         }
 
-        sum = Mathf.RoundToInt(sum * 0.5f);
+        sum = Mathf.RoundToInt(sum * 0.5f)+1;
 
         return sum;
     }

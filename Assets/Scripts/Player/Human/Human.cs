@@ -23,6 +23,6 @@ public class Human : MonoBehaviour
         else
             PlayerClass.heal(1);
 
-        return PlayerClass.result[0];
+        return PlayerClass.result[0] + 2;
     }
 }

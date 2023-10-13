@@ -4,20 +4,20 @@ using TMPro;
 public class gameManager : MonoBehaviour
 {
     public static gameManager Instance;
-   
 
-    public  DeckShuffler deckShuffler;//deck shuffling object
+
+    public DeckShuffler deckShuffler;//deck shuffling object
     public ChallengeDeck challengeDeck;//chellenge deck object
     public GameController gameController;//game controller object
-    
+
 
     public GameObject buttonCanvas;
     public GameObject ThiefButton;
-   
+
 
 
     public GameObject[] players = new GameObject[4];//players
-    
+
     public int currentPlayer = 0;//current players turn
 
 
@@ -25,9 +25,9 @@ public class gameManager : MonoBehaviour
 
     private int[] challengeInfo = new int[2];//the details of the current challenge
 
-    [SerializeField]private int[] playerRolls = new int [4];//what each player rolled
+    [SerializeField] private int[] playerRolls = new int[4];//what each player rolled
 
-   [SerializeField] private int[] points = new int[4];//how many points each player has
+    [SerializeField] private int[] points = new int[4];//how many points each player has
 
     private int[] sortingArray = new int[] { 1, 2, 3, 4 };//keeps player rolls position during sorting
 
@@ -40,7 +40,7 @@ public class gameManager : MonoBehaviour
     //public bool thiefChoice;
 
     int givingPoint = 3;
-    private int numRoomCompleted;
+   [SerializeField] private int numRoomCompleted;
 
     void Awake()
     {
@@ -60,9 +60,10 @@ public class gameManager : MonoBehaviour
         chosenRoom = deckShuffler.firstCard();
         challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
         Debug.Log("first card is " + chosenRoom);
+
+
         
-        
-        
+
     }
     private void Update()
     {
@@ -70,10 +71,10 @@ public class gameManager : MonoBehaviour
     }
     public void GameLoop()
     {
-        Debug.Log("it is player " + currentPlayer + " turn");
-        if (!selectingRoom)
+        
+        if (!selectingRoom && numRoomCompleted != 5)
         {
-            
+            Debug.Log("it is player " + currentPlayer + " turn");
             if (!alreadyRolling)
             {
                     
@@ -121,6 +122,10 @@ public class gameManager : MonoBehaviour
                     
             }
             
+        }else if(!selectingRoom && numRoomCompleted == 5)
+        {
+            EndGame();
+
         }
 
 
@@ -134,6 +139,7 @@ public class gameManager : MonoBehaviour
 
     public void ThiefReroll()
     {
+        
         currentPlayer = 2;
         if (chosenRoom == 5)
         {
@@ -144,12 +150,14 @@ public class gameManager : MonoBehaviour
             playerRolls[currentPlayer] = gameController.Roll();
         }
         ThiefButton.SetActive(false);
+        Debug.Log("Thief Rerolled for" + playerRolls[currentPlayer]);
         currentPlayer++;
     }
 
 
     private void SortResults()
     {
+       
         for (int i = 0; i <= 3; i++)
         {
             for (int k = 0; k <= 3; k++)
@@ -173,63 +181,74 @@ public class gameManager : MonoBehaviour
             //Debug.Log("Player " + sortingArray[i] + " rolled " + playerRolls[i]);
         }
     }
-    public void TieBreaker()
-    {
-
-    }
+   
    private void CheckWinRoom()
     {
-        
+        numRoomCompleted++;
         //check if all tied
-       /* if(playerRolls[0] == playerRolls[3])
-        {
-            Debug.Log("everyone Tied");
-        }
-        //check if 3 tied
-        else if(playerRolls[0] == playerRolls[2])
-        {
-            Debug.Log("3 people tied");
-        }
-        //check if two tied
-        else if(playerRolls[0] == playerRolls[1])
-        {
-            Debug.Log("2 people tied");
-        }*/
-        //else
-        //{
-            for (int i = 0; i <= 3; i++)
+        
+        
+        for (int i = 0; i <= 3; i++)
             {
-                if(playerRolls[i] < challengeInfo[0])//player failed
+            if (playerRolls[i] < challengeInfo[0])//player failed
+            {
+                Debug.Log("Damaging" + players[sortingArray[i] - 1].name);
+                switch (sortingArray[i] - 1)
                 {
-                    switch (sortingArray[i])
-                    {
-                        case 0:
-                            players[0].GetComponent<Magician>().PlayerClass.hurt(challengeInfo[1]);
-                            break;
-                        case 1:
-                            players[1].GetComponent<Knight>().PlayerClass.hurt(challengeInfo[1]);
-                            break;
-                        case 2:
-                            players[2].GetComponent<Thief>().PlayerClass.hurt(challengeInfo[1]);
-                            break;
-                        case 3:
-                            players[3].GetComponent<Human>().PlayerClass.hurt(challengeInfo[1]);
-                            break;
-                    }
-                }
-                else//player won
-                {
-                    points[sortingArray[i] - 1] += givingPoint;
-                    givingPoint--;
-                }
 
+                    case 0:
+                        players[0].GetComponent<Magician>().PlayerClass.hurt(challengeInfo[1]);
+                        if (players[0].GetComponent<Magician>().PlayerClass.stamina <= 0)
+                        {
+                            Debug.Log("magician died and lost 1 point");
+                            players[0].GetComponent<Magician>().PlayerClass.stamina = 3;
+                            points[0]--;
+                        }
+                        break;
+                    case 1:
+                        players[1].GetComponent<Knight>().PlayerClass.hurt(challengeInfo[1]);
+                        if (players[1].GetComponent<Knight>().PlayerClass.stamina <= 0)
+                        {
+                            Debug.Log("Knight died and lost 1 point");
+                            players[1].GetComponent<Knight>().PlayerClass.stamina = 3;
+                            points[1]--;
+                        }
+                        break;
+                    case 2:
+                        players[2].GetComponent<Thief>().PlayerClass.hurt(challengeInfo[1]);
+                        if (players[2].GetComponent<Thief>().PlayerClass.stamina <= 0)
+                        {
+                            Debug.Log("Thief died and lost 1 point");
+                            players[2].GetComponent<Thief>().PlayerClass.stamina = 3;
+                            points[2]--;
+                        }
+                        break;
+                    case 3:
+                        players[3].GetComponent<Human>().PlayerClass.hurt(challengeInfo[1]);
+                        if (players[3].GetComponent<Human>().PlayerClass.stamina <= 0)
+                        {
+                            Debug.Log("Knight died and lost 1 point");
+                            players[3].GetComponent<Human>().PlayerClass.stamina = 3;
+                            points[3]--;
+                        }
+                        break;
+                }
             }
-            givingPoint = 3;
-        //}
 
-        
-        
-        for(int i = 0; i <= 3; i++)
+            else//player won
+            {
+               
+                points[sortingArray[i] - 1] += givingPoint;
+                givingPoint--;
+            }
+
+            
+            
+        }
+
+        givingPoint = 3;
+
+        for (int i = 0; i <= 3; i++)
         {
            // playerRolls[i] = 0;
             sortingArray[i] = i +1;
@@ -267,7 +286,47 @@ public class gameManager : MonoBehaviour
 
     private void checkDrawnCard()
     {
-        newCards = deckShuffler.DrawnCards();
-        
+        if (numRoomCompleted < 5)
+        {
+            newCards = deckShuffler.DrawnCards();
+        }
     }
+
+    private void EndGame()
+    {
+        Inputs.MenuMode();
+        for (int i = 0; i <= 3; i++)
+        {
+            for (int k = 0; k <= 3; k++)
+            {
+                if (points[i] > points[k])
+                {
+                    int temp = points[i];
+                    points[i] = points[k];
+                    points[k] = temp;
+
+                    temp = sortingArray[i];
+                    sortingArray[i] = sortingArray[k];
+                    sortingArray[k] = temp;
+                }
+
+
+            }
+        }
+        
+        //deckShuffler.ResetDeck();
+        numRoomCompleted = 0;
+        for ( int i = 0; i <= 3; i++)
+        {
+            Debug.Log("player " + sortingArray[i] + "got " + (i+1) + " place with " + points[i]);
+            points[i] = 0;
+            playerRolls[i] = 0;
+            sortingArray[i] = i + 1;
+        }
+        //chosenRoom = deckShuffler.firstCard();
+        //challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
+        Inputs.PlayMode();
+    }
+    
+   
 }

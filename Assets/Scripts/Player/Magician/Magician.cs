@@ -57,9 +57,15 @@ public class Magician : MonoBehaviour
 
 
         if (UsingMight)
+        {
+            Debug.Log("magician rolled with might");
             return PlayerClass.result.Min() + PlayerClass.might;
+        }
         else
+        {
+            Debug.Log("magician rolled with might");
             return PlayerClass.result.Min() + PlayerClass.magic;
+        }
     }
 
 

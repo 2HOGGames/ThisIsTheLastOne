@@ -12,13 +12,16 @@ public class Player
     public TextMeshProUGUI staminaText;
     public TextMeshProUGUI mightText;
     public TextMeshProUGUI magicText;
+    
 
     public void heal(int healAmount)
     {
+        
         stamina += healAmount;
     }
     public void hurt(int damage)
     {
+        Debug.Log("damage");
         stamina -= damage;
     }
 }

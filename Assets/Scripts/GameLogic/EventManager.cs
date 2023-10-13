@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
 
     public void SwitchStat()
     {
+        Debug.Log("switch stats");
         SwitchRoomStatType?.Invoke();
     }
 }
