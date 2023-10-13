@@ -7,6 +7,8 @@ public class EventManager : MonoBehaviour
     public static event Action defaultEye;
     public static event Action SwitchRoomStatType;
 
-
-    //SwitchRoomStatType?.Invoke();
+    public void SwitchStat()
+    {
+        SwitchRoomStatType?.Invoke();
+    }
 }

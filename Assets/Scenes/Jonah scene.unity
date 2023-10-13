@@ -1953,6 +1953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483ba144b73b9464d8fd4ec122d919ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events: {fileID: 1234745546}
 --- !u!1 &1101238169
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class ButtonInput : MonoBehaviour
             _manager.waitForInput = false;
             _manager.SelectionMade(buttonNum);
         }
-        
+        Inputs.PlayMode();
     }
     
 

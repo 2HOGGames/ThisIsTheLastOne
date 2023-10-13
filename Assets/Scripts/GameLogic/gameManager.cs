@@ -58,6 +58,7 @@ public class gameManager : MonoBehaviour
         ThiefButton.SetActive(false);
         //Commented this out so the game owuld run idk what happend......
         chosenRoom = deckShuffler.firstCard();
+        challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
         Debug.Log("first card is " + chosenRoom);
         
         
@@ -69,7 +70,7 @@ public class gameManager : MonoBehaviour
     }
     public void GameLoop()
     {
-        
+        Debug.Log("it is player " + currentPlayer + " turn");
         if (!selectingRoom)
         {
             
@@ -84,14 +85,15 @@ public class gameManager : MonoBehaviour
                 if (chosenRoom == 5)
                 {
                         //luck room
-                        Debug.Log("Luck roll");
+                        //Debug.Log("Luck roll");
                     playerRolls[currentPlayer] = gameController.LuckRoll();
                 }
                 else
                 {
-                        Debug.Log("notLuckRoom");
+                        //Debug.Log("notLuckRoom");
                     playerRolls[currentPlayer] = gameController.Roll();
                 }
+                    Debug.Log("you rolled " + playerRolls[currentPlayer] + " your Target is " + challengeInfo[0]);
                 if (currentPlayer == 2)
                 {
                     waitForThief = true;
@@ -177,9 +179,9 @@ public class gameManager : MonoBehaviour
     }
    private void CheckWinRoom()
     {
-        challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
+        
         //check if all tied
-        if(playerRolls[0] == playerRolls[3])
+       /* if(playerRolls[0] == playerRolls[3])
         {
             Debug.Log("everyone Tied");
         }
@@ -192,9 +194,9 @@ public class gameManager : MonoBehaviour
         else if(playerRolls[0] == playerRolls[1])
         {
             Debug.Log("2 people tied");
-        }
-        else
-        {
+        }*/
+        //else
+        //{
             for (int i = 0; i <= 3; i++)
             {
                 if(playerRolls[i] < challengeInfo[0])//player failed
@@ -202,16 +204,16 @@ public class gameManager : MonoBehaviour
                     switch (sortingArray[i])
                     {
                         case 0:
-                            players[0].GetComponent<Magician>().PlayerClass.hurt(1);
+                            players[0].GetComponent<Magician>().PlayerClass.hurt(challengeInfo[1]);
                             break;
                         case 1:
-                            players[1].GetComponent<Knight>().PlayerClass.hurt(1);
+                            players[1].GetComponent<Knight>().PlayerClass.hurt(challengeInfo[1]);
                             break;
                         case 2:
-                            players[2].GetComponent<Thief>().PlayerClass.hurt(1);
+                            players[2].GetComponent<Thief>().PlayerClass.hurt(challengeInfo[1]);
                             break;
                         case 3:
-                            players[3].GetComponent<Human>().PlayerClass.hurt(1);
+                            players[3].GetComponent<Human>().PlayerClass.hurt(challengeInfo[1]);
                             break;
                     }
                 }
@@ -223,7 +225,7 @@ public class gameManager : MonoBehaviour
 
             }
             givingPoint = 3;
-        }
+        //}
 
         
         
@@ -253,13 +255,13 @@ public class gameManager : MonoBehaviour
                 discardedRoom = newCards[0];
                 Debug.Log("discarded card 1");
             }
-
+            challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
             buttonCanvas.SetActive(false);
             deckShuffler.ReformDeck(discardedRoom);
             
 
             selectingRoom = false;
-            Inputs.MenuMode();
+            
         }
     }
 
