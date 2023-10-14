@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Magician : MonoBehaviour
@@ -14,12 +15,15 @@ public class Magician : MonoBehaviour
     [SerializeField] private Sprite[] dieSprites;
     [SerializeField] private GameObject MagicianAnim;
 
+    private TextMeshProUGUI mainText;
+
     private bool UsingMight;
 
     private void Awake()
     {
         PlayerClass.mightText.text = "Might\n" + PlayerClass.might;
         PlayerClass.magicText.text = "Magic\n" + PlayerClass.magic;
+        mainText = GameObject.Find("MainText").GetComponent<TextMeshProUGUI>();
     }
     private void Update()
     {
@@ -58,12 +62,14 @@ public class Magician : MonoBehaviour
 
         if (UsingMight)
         {
+            mainText.text = "Magician Rolled: " + (PlayerClass.result.Min() + PlayerClass.might);
             Debug.Log("magician rolled with might");
             return PlayerClass.result.Min() + PlayerClass.might;
         }
         else
         {
-            Debug.Log("magician rolled with might");
+            mainText.text = "Magician Rolled: " + (PlayerClass.result.Min() + PlayerClass.magic);
+            Debug.Log("magician rolled with magic");
             return PlayerClass.result.Min() + PlayerClass.magic;
         }
     }

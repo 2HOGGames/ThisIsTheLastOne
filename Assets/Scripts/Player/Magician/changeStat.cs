@@ -9,6 +9,6 @@ public class changeStat : MonoBehaviour
 
     public void changeValue()
     {
-        statNumber.text = (magician.PlayerClass.result.Max() + magician.PlayerClass.magic).ToString();
+        statNumber.text = (magician.PlayerClass.result.Min() + magician.PlayerClass.magic).ToString();
     }
 }
