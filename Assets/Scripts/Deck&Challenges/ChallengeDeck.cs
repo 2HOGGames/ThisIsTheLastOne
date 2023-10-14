@@ -11,15 +11,22 @@ public class ChallengeDeck : MonoBehaviour
     [SerializeField] private GameObject room;
     private int nextSpace;
     private int goNext;
-    
+    [SerializeField] private Sprite[] roomSprites;
+    private SpriteRenderer roomRenderer;
+
+    private void Awake()
+    {
+        roomRenderer = room.GetComponent<SpriteRenderer>();
+    }
+
     //target num is the number needed to roll to win the room
     //stat is the stat being rolled 1 might, 2 magic, 3 none
     //numOfRolls is how many attempts each player gets
     //loserPenalty is wether or not there is a penalty for being last
-   public int[] ChosenRoom(int roomNum)
+    public int[] ChosenRoom(int roomNum)
     {
-        
-        
+
+
         Instantiate(room, new Vector3(0, nextSpace,0), Quaternion.identity);
         goNext++;
         nextSpace += 8;
@@ -29,20 +36,24 @@ public class ChallengeDeck : MonoBehaviour
                 Debug.Log("combat room");
                 targetNum = 8;
                 loserPenalty = 3;
+
+                setSprite(0);
                 
                 break;
             case 1:
                 Debug.Log("Might Room");
                 events.SwitchStat();
                 targetNum = 6;
-                
+
                 loserPenalty = 3;
+                setSprite(0);
                 break;
             case 2:
                 Debug.Log("Magic Room");
                 targetNum = 8;
 
                 loserPenalty = 1;
+                setSprite(0);
                 events.SwitchStat();
                 break;
             case 3:
@@ -50,19 +61,25 @@ public class ChallengeDeck : MonoBehaviour
                 targetNum = Random.Range(3, 10);
                 
                 loserPenalty = 1;
+                setSprite(0);
                 break;
             case 4:
                 Debug.Log("random stuff to fill out info");
                 targetNum = 8;
-               
                 loserPenalty = 2;
+
+
+                setSprite(0);
                 break;
             case 5:
                 
                 Debug.Log("Luck room");
                 targetNum = 0;
                 loserPenalty = 0;
-                
+
+
+                setSprite(1);
+
                 break;
         }
         roomChallenge[0] = targetNum;
@@ -71,4 +88,8 @@ public class ChallengeDeck : MonoBehaviour
     }
 
     
+    private void setSprite(int sprite)
+    {
+        roomRenderer.sprite = roomSprites[sprite];
+    }
 }
