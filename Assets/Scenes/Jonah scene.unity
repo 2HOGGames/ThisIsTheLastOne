@@ -1870,10 +1870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: {fileID: 1234745546}
-  room:
-  - {fileID: 1293214471}
-  - {fileID: 1308109498120895629, guid: 885ef57033120ab45bd3cf25eaf0cfa1, type: 3}
-  - {fileID: 1308109498120895629, guid: 75eda0e952ada934ca87f0dd2d7d6609, type: 3}
+  room: {fileID: 1308109498120895629, guid: 885ef57033120ab45bd3cf25eaf0cfa1, type: 3}
+  roomSprites:
+  - {fileID: 21300000, guid: db71c40ecaea28a41b2240b5f4585a2c, type: 3}
+  - {fileID: 21300000, guid: 59358c50a5fa96a42b38e18da8d5219c, type: 3}
+  - {fileID: 21300000, guid: 7eb73341c95114b4bb5c743f1a48d54c, type: 3}
 --- !u!1 &1101238169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,11 +2430,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0f6b6c0f402c58348adf77c48aa93743, type: 3}
   - {fileID: 21300000, guid: d3e2e444d604c47448f37cae7bc45b0a, type: 3}
   - {fileID: 21300000, guid: ddb219571b4de3b4f8048361fdd5c953, type: 3}
---- !u!1 &1293214471 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1308109498120895629, guid: 885ef57033120ab45bd3cf25eaf0cfa1, type: 3}
-  m_PrefabInstance: {fileID: 7331344922438905796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306423329
 GameObject:
   m_ObjectHideFlags: 0
@@ -5910,6 +5906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 6350329991285887974, guid: 885ef57033120ab45bd3cf25eaf0cfa1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db71c40ecaea28a41b2240b5f4585a2c, type: 3}
     - target: {fileID: 9097084652167527878, guid: 885ef57033120ab45bd3cf25eaf0cfa1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

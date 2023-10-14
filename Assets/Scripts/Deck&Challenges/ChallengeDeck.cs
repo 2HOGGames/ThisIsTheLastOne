@@ -44,8 +44,8 @@ public class ChallengeDeck : MonoBehaviour
                 Debug.Log("Might Room");
                 events.SwitchStat();
                 targetNum = 6;
-
                 loserPenalty = 3;
+                
                 setSprite(0);
                 break;
             case 2:
