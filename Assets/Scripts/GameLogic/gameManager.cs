@@ -44,6 +44,8 @@ public class gameManager : MonoBehaviour
     int givingPoint = 3;
    [SerializeField] private int numRoomCompleted;
 
+    private TextMeshProUGUI mainText;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -53,6 +55,8 @@ public class gameManager : MonoBehaviour
         }
         Instance = this;
 
+
+        mainText = GameObject.Find("MainText").GetComponent<TextMeshProUGUI>();
     }
     private void Start()
     {
@@ -97,12 +101,14 @@ public class gameManager : MonoBehaviour
                     playerRolls[currentPlayer] = gameController.Roll();
                 }
                     Debug.Log("you rolled " + playerRolls[currentPlayer] + " your Target is " + challengeInfo[0]);
+                    mainText.text = ("You Rolled: " + playerRolls[currentPlayer]);
                 if (currentPlayer == 2)
                 {
                     waitForThief = true;
                     Inputs.MenuMode();
                     Debug.Log("thief may reroll");
                     ThiefButton.SetActive(true);
+                    mainText.text = ("You Rolled A: " + playerRolls[currentPlayer] + "\nWould You Like To ReRoll?");
 
                 }
                 currentPlayer++;
@@ -152,6 +158,7 @@ public class gameManager : MonoBehaviour
         }
         ThiefButton.SetActive(false);
         Debug.Log("Thief Rerolled for" + playerRolls[currentPlayer]);
+        mainText.text = "Theif ReRolled For A " + playerRolls[currentPlayer];
         currentPlayer++;
     }
 
