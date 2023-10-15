@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class ChallengeDeck : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class ChallengeDeck : MonoBehaviour
     [SerializeField] private EventManager events;
     [SerializeField] private GameObject room;
     private int nextSpace;
-    private int goNext;
+   // private int goNext;
     [SerializeField] private Sprite[] roomSprites;
     private SpriteRenderer roomRenderer;
+    [SerializeField] private TextMeshProUGUI roomText;
+    private string roomName;
 
     private void Awake()
     {
@@ -27,16 +31,16 @@ public class ChallengeDeck : MonoBehaviour
     {
 
 
-        Instantiate(room, new Vector3(0, nextSpace,0), Quaternion.identity);
-        goNext++;
-        nextSpace += 8;
+        
+        //goNext++;
+        
         switch (roomNum)
         {
             case 0:
                 Debug.Log("combat room");
                 targetNum = 8;
                 loserPenalty = 3;
-
+                roomName = "Combat Room";
                 setSprite(0);
                 
                 break;
@@ -45,30 +49,30 @@ public class ChallengeDeck : MonoBehaviour
                 events.SwitchStat();
                 targetNum = 6;
                 loserPenalty = 3;
-                
-                setSprite(4);
+                roomName = "Might Room";
+                setSprite(1);
                 break;
             case 2:
                 Debug.Log("Magic Room");
                 targetNum = 8;
-
+                roomName = "Magic Room";
                 loserPenalty = 1;
-                setSprite(3);
+                setSprite(2);
                 events.SwitchStat();
                 break;
             case 3:
                 Debug.Log("lock Picking Room");
                 targetNum = Random.Range(3, 10);
-                
+                roomName = "Lock Picking Room";
                 loserPenalty = 1;
-                setSprite(0);
+                setSprite(3);
                 break;
             case 4:
                 Debug.Log("random stuff to fill out info");
                 targetNum = 8;
                 loserPenalty = 2;
 
-
+                roomName = "Mystery Challenge Room";
                 setSprite(0);
                 break;
             case 5:
@@ -76,12 +80,15 @@ public class ChallengeDeck : MonoBehaviour
                 Debug.Log("Luck room");
                 targetNum = 0;
                 loserPenalty = 0;
+                roomName = "Luck Room";
 
-
-                setSprite(1);
+                setSprite(4);
 
                 break;
         }
+        Instantiate(room, new Vector3(0, nextSpace, 0), Quaternion.identity);
+        roomText.text = roomName + "\n Your target is: " + targetNum + "\n Losing penalty is: " + loserPenalty ;
+        nextSpace += 8;
         roomChallenge[0] = targetNum;
         roomChallenge[1] = loserPenalty;
         return (roomChallenge);
@@ -90,6 +97,7 @@ public class ChallengeDeck : MonoBehaviour
     
     private void setSprite(int sprite)
     {
+        Debug.Log("Render sprite num " + sprite);
         roomRenderer.sprite = roomSprites[sprite];
     }
 }
