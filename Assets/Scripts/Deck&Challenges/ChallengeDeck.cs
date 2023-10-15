@@ -54,7 +54,7 @@ public class ChallengeDeck : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Magic Room");
-                targetNum = 8;
+                targetNum = 7;
                 roomName = "Magic Room";
                 loserPenalty = 1;
                 setSprite(2);

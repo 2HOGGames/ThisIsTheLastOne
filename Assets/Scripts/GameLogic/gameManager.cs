@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
 
     public GameObject buttonCanvas;
     public GameObject ThiefButton;
+    public GameObject cardCanvas;
     public Camera gameCamera;
 
 
@@ -24,6 +25,14 @@ public class gameManager : MonoBehaviour
     private int[] newCards = new int[2];//current cards waiting to be chosen
 
     private int[] challengeInfo = new int[2];//the details of the current challenge
+
+    private string[] cardDescription = new string[6] {
+        "Bully Slime Attacks!\n Roll your might vs 8\n losers take 3 damage", 
+        "Test of Strength!\n Roll your Might vs 6\n losers pull a muscle and take 1 damage",
+        "Cast a spell!\n Roll your Magic vs 7\n losers spell backfires hurting them for 1 damage",
+        "you found locked treasures!\n roll your Might or Magic vs a random number between 4-9\n losers are embarassed and take 1 damage",
+        "A mysterious room with unknown dangers\n roll your Might or Magic vs 8\n losers misplace their wallet and take 2 damage",
+        "Test your luck!\n roll 2d6 with no bonuses against 0\n losers are dissapointed but take no damage" };
 
     [SerializeField] private int[] playerRolls = new int[4];//what each player rolled
 
@@ -45,6 +54,8 @@ public class gameManager : MonoBehaviour
    [SerializeField] private int numRoomCompleted;
 
     private TextMeshProUGUI mainText;
+    [SerializeField] TextMeshProUGUI card1Text, card2Text;
+
 
     void Awake()
     {
@@ -60,6 +71,7 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
+        cardCanvas.SetActive(false);
         buttonCanvas.SetActive(false);
         ThiefButton.SetActive(false);
         //Commented this out so the game owuld run idk what happend......
@@ -266,7 +278,7 @@ public class gameManager : MonoBehaviour
     
     public void SelectionMade(int selection)
     {
-
+        cardCanvas.SetActive(false);
         if (selectingRoom && !waitForInput)
         {
             waitForInput = true;
@@ -299,6 +311,13 @@ public class gameManager : MonoBehaviour
         {
             newCards = deckShuffler.DrawnCards();
         }
+        cardCanvas.SetActive(true);
+
+        card1Text.text = cardDescription[newCards[0]];
+        card2Text.text = cardDescription[newCards[1]];
+
+
+
     }
 
     private void EndGame()
