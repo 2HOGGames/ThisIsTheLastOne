@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class gameManager : MonoBehaviour
     public GameObject buttonCanvas;
     public GameObject ThiefButton;
     public GameObject cardCanvas;
+    public GameObject resetButton;
     public Camera gameCamera;
 
 
@@ -32,7 +34,7 @@ public class gameManager : MonoBehaviour
         "Cast a spell!\n Roll your Magic vs 7\n losers spell backfires hurting them for 1 damage",
         "you found locked treasures!\n roll your Might or Magic vs a random number between 4-9\n losers are embarassed and take 1 damage",
         "A mysterious room with unknown dangers\n roll your Might or Magic vs 8\n losers misplace their wallet and take 2 damage",
-        "Test your luck!\n roll 2d6 with no bonuses against 0\n losers are dissapointed but take no damage" };
+        "Test your luck!\n roll 2d6 with no bonuses vs 0\nlosers are dissapointed but take no damage" };
 
     [SerializeField] private int[] playerRolls = new int[4];//what each player rolled
 
@@ -71,6 +73,7 @@ public class gameManager : MonoBehaviour
     }
     private void Start()
     {
+        resetButton.SetActive(false);
         cardCanvas.SetActive(false);
         buttonCanvas.SetActive(false);
         ThiefButton.SetActive(false);
@@ -90,7 +93,7 @@ public class gameManager : MonoBehaviour
     public void GameLoop()
     {
         
-        if (!selectingRoom && numRoomCompleted != 5)
+        if (!selectingRoom)
         {
             Debug.Log("it is player " + currentPlayer + " turn");
             if (!alreadyRolling)
@@ -98,7 +101,7 @@ public class gameManager : MonoBehaviour
                     
             alreadyRolling = true;
             //Debug.Log("space");
-            if (currentPlayer < 4)
+            if (currentPlayer < 4 && numRoomCompleted != 5)
             {
                 //Debug.Log("space pressed and it is " + currentPlayer + "  players turn");
                 if (chosenRoom == 5)
@@ -120,7 +123,7 @@ public class gameManager : MonoBehaviour
                     Inputs.MenuMode();
                     Debug.Log("thief may reroll");
                     ThiefButton.SetActive(true);
-                    mainText.text = ("You Rolled A: " + playerRolls[currentPlayer] + "\nWould You Like To ReRoll?");
+                    mainText.text = ("You Rolled: " + playerRolls[currentPlayer] + "\nWould You Like To ReRoll?");
 
                 }
                 currentPlayer++;
@@ -137,10 +140,10 @@ public class gameManager : MonoBehaviour
                 checkDrawnCard();
                 waitForInput = true;
                 currentPlayer = 0;
-            }/*else if(numRoomCompleted == 5)
+            }else if(numRoomCompleted == 5)
                 {
                     EndGame();
-                }*/
+                }
             alreadyRolling = false;
                     
             }
@@ -170,7 +173,7 @@ public class gameManager : MonoBehaviour
         }
         ThiefButton.SetActive(false);
         Debug.Log("Thief Rerolled for" + playerRolls[currentPlayer]);
-        mainText.text = "Theif ReRolled For A " + playerRolls[currentPlayer];
+        mainText.text = "Thief ReRolled: " + playerRolls[currentPlayer];
         currentPlayer++;
     }
 
@@ -195,10 +198,6 @@ public class gameManager : MonoBehaviour
 
 
             }
-        }
-        for(int i = 0; i <= 3; i++)
-        {
-            //Debug.Log("Player " + sortingArray[i] + " rolled " + playerRolls[i]);
         }
     }
    
@@ -311,6 +310,7 @@ public class gameManager : MonoBehaviour
         {
             newCards = deckShuffler.DrawnCards();
         }
+        mainText.text = "";
         cardCanvas.SetActive(true);
 
         card1Text.text = cardDescription[newCards[0]];
@@ -323,6 +323,7 @@ public class gameManager : MonoBehaviour
     private void EndGame()
     {
         Inputs.MenuMode();
+        resetButton.SetActive(true);
         for (int i = 0; i <= 3; i++)
         {
             for (int k = 0; k <= 3; k++)
@@ -350,12 +351,8 @@ public class gameManager : MonoBehaviour
             playerRolls[i] = 0;
             sortingArray[i] = i + 1;
         }
-        deckShuffler.ResetDeck();
-        numRoomCompleted = 0;
-        currentPlayer = 0;
-        chosenRoom = deckShuffler.firstCard();
-        challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
-        Inputs.PlayMode();
+        
+        
     }
     
    
