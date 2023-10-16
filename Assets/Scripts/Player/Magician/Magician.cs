@@ -10,9 +10,9 @@ public class Magician : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI statNumber;
     [SerializeField] private Animator magicianAnimator;
-    [SerializeField] private UnityEngine.UI.Image die1;
+    /*[SerializeField] private UnityEngine.UI.Image die1;
     [SerializeField] private UnityEngine.UI.Image die2;
-    [SerializeField] private Sprite[] dieSprites;
+    [SerializeField] private Sprite[] dieSprites;*/
     [SerializeField] private GameObject MagicianAnim;
 
     private TextMeshProUGUI mainText;
@@ -39,7 +39,7 @@ public class Magician : MonoBehaviour
 
         //die1.sprite = dieSprites[PlayerClass.result[0] - 1];
         //die2.sprite = dieSprites[PlayerClass.result[1] - 1];
-        statNumber.text = PlayerClass.magic.ToString();
+        //statNumber.text = PlayerClass.magic.ToString();
 
         //magicianAnimator.SetTrigger("StartAnim");
 
