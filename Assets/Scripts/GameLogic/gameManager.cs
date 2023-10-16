@@ -225,7 +225,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Magician failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Magician failed the challenge and lost " + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 1:
@@ -238,7 +238,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Knight failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Knight failed the challenge and lost " + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 2:
@@ -251,7 +251,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Thief failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Thief failed the challenge and lost " + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 3:
@@ -264,7 +264,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Human failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Human failed the challenge and lost " + challengeInfo[1] + " stamina\n";
                         }
                         break;
                 }
