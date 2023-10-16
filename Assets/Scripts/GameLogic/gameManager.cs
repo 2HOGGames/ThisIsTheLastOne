@@ -319,7 +319,7 @@ public class gameManager : MonoBehaviour
             gameCamera.transform.position = new Vector3(0, nextPos, -10);//moves camera
             for(int i = 0; i <= 3; i++)
             {
-                players[i].transform.position = new Vector3(players[i].transform.position.x,players[i].transform.position.y + nextPos, players[i].transform.position.z);
+                players[i].transform.position = new Vector3(players[i].transform.position.x,players[i].transform.position.y + 8, players[i].transform.position.z);
             }
         }
     }
@@ -366,7 +366,8 @@ public class gameManager : MonoBehaviour
        
         for ( int i = 0; i <= 3; i++)
         {
-            Debug.Log("player " + sortingArray[i] + "got " + (i+1) + " place with " + points[i]);
+            //Debug.Log("player " + sortingArray[i] + "got " + (i+1) + " place with " + points[i]);
+            scorekeeper.text += "player " + sortingArray[i] + "got " + (i + 1) + " place with " + points[i] + "\n ";
             points[i] = 0;
             playerRolls[i] = 0;
             sortingArray[i] = i + 1;
