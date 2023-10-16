@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+
 
 public class gameManager : MonoBehaviour
 {
@@ -56,7 +56,7 @@ public class gameManager : MonoBehaviour
    [SerializeField] private int numRoomCompleted;
 
     private TextMeshProUGUI mainText;
-    [SerializeField] TextMeshProUGUI card1Text, card2Text;
+    [SerializeField] private TextMeshProUGUI card1Text, card2Text, scorekeeper;
 
 
     void Awake()
@@ -219,36 +219,52 @@ public class gameManager : MonoBehaviour
                         players[0].GetComponent<Magician>().PlayerClass.hurt(challengeInfo[1]);
                         if (players[0].GetComponent<Magician>().PlayerClass.stamina <= 0)
                         {
-                            Debug.Log("magician died and lost 1 point");
+                            scorekeeper.text += "Magician died and lost 1 point\n";
                             players[0].GetComponent<Magician>().PlayerClass.stamina = 3;
                             points[0]--;
+                        }
+                        else
+                        {
+                            scorekeeper.text += "Magician Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 1:
                         players[1].GetComponent<Knight>().PlayerClass.hurt(challengeInfo[1]);
                         if (players[1].GetComponent<Knight>().PlayerClass.stamina <= 0)
                         {
-                            Debug.Log("Knight died and lost 1 point");
+                            scorekeeper.text += "Knight died and lost 1 point\n";
                             players[1].GetComponent<Knight>().PlayerClass.stamina = 3;
                             points[1]--;
+                        }
+                        else
+                        {
+                            scorekeeper.text += "Knight Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 2:
                         players[2].GetComponent<Thief>().PlayerClass.hurt(challengeInfo[1]);
                         if (players[2].GetComponent<Thief>().PlayerClass.stamina <= 0)
                         {
-                            Debug.Log("Thief died and lost 1 point");
+                            scorekeeper.text += "Thief died and lost 1 point\n";
                             players[2].GetComponent<Thief>().PlayerClass.stamina = 3;
                             points[2]--;
+                        }
+                        else
+                        {
+                            scorekeeper.text += "Thief Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 3:
                         players[3].GetComponent<Human>().PlayerClass.hurt(challengeInfo[1]);
                         if (players[3].GetComponent<Human>().PlayerClass.stamina <= 0)
                         {
-                            Debug.Log("Knight died and lost 1 point");
+                            scorekeeper.text += "Human died and lost 1 point\n";
                             players[3].GetComponent<Human>().PlayerClass.stamina = 3;
                             points[3]--;
+                        }
+                        else
+                        {
+                            scorekeeper.text += "Human Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                 }
@@ -256,7 +272,7 @@ public class gameManager : MonoBehaviour
 
             else//player won
             {
-               
+                scorekeeper.text += players[sortingArray[i] - 1].name + "scored: " + givingPoint + " points\n";
                 points[sortingArray[i] - 1] += givingPoint;
                 givingPoint--;
             }
@@ -296,8 +312,8 @@ public class gameManager : MonoBehaviour
             challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
             buttonCanvas.SetActive(false);
             deckShuffler.ReformDeck(discardedRoom);
-            
 
+            scorekeeper.text = "";
             selectingRoom = false;
             nextPos += 8;
             gameCamera.transform.position = new Vector3(0, nextPos, -10);//moves camera
