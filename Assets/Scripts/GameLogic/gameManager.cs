@@ -367,7 +367,7 @@ public class gameManager : MonoBehaviour
         for ( int i = 0; i <= 3; i++)
         {
             //Debug.Log("player " + sortingArray[i] + "got " + (i+1) + " place with " + points[i]);
-            scorekeeper.text += "player " + sortingArray[i] + "got " + (i + 1) + " place with " + points[i] + "\n";
+            scorekeeper.text += "player " + sortingArray[i] + "got " + (i + 1) + " place with " + points[i] + "\n ";
             points[i] = 0;
             playerRolls[i] = 0;
             sortingArray[i] = i + 1;
