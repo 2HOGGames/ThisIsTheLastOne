@@ -272,7 +272,7 @@ public class gameManager : MonoBehaviour
 
             else//player won
             {
-                scorekeeper.text += players[sortingArray[i] - 1].name + "scored: " + givingPoint + " points\n";
+                scorekeeper.text += players[sortingArray[i] - 1].name + " scored: " + givingPoint + " points\n";
                 points[sortingArray[i] - 1] += givingPoint;
                 givingPoint--;
             }
