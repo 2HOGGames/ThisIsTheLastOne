@@ -32,32 +32,32 @@ public class Magician : MonoBehaviour
 
     public int RollMagician()
     {
-        MagicianAnim.SetActive(true);
-        magicianAnimator.SetBool("LuckySeven", false);
+        //MagicianAnim.SetActive(true);
+        //magicianAnimator.SetBool("LuckySeven", false);
         PlayerClass.result[0] = Random.Range(1, 7);
         PlayerClass.result[1] = Random.Range(1, 7);
 
-        die1.sprite = dieSprites[PlayerClass.result[0] - 1];
-        die2.sprite = dieSprites[PlayerClass.result[1] - 1];
+        //die1.sprite = dieSprites[PlayerClass.result[0] - 1];
+        //die2.sprite = dieSprites[PlayerClass.result[1] - 1];
         statNumber.text = PlayerClass.magic.ToString();
 
-        magicianAnimator.SetTrigger("StartAnim");
+        //magicianAnimator.SetTrigger("StartAnim");
 
         //Lucky Seven
         if (PlayerClass.result[0] + PlayerClass.result[1] == 7)
         {
             PlayerClass.heal(2);
-            magicianAnimator.SetBool("LuckySeven", true);
+            //magicianAnimator.SetBool("LuckySeven", true);
         }
 
-        if (PlayerClass.result[0] <= PlayerClass.result[1])
+        /*if (PlayerClass.result[0] <= PlayerClass.result[1])
         {
             magicianAnimator.SetTrigger("Roll1");
         }
         else
         {
             magicianAnimator.SetTrigger("Roll2");
-        }
+        }*/
 
 
         if (UsingMight)
