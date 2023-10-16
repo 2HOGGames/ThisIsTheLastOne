@@ -16,7 +16,7 @@ public class gameManager : MonoBehaviour
     public GameObject ThiefButton;
     public GameObject cardCanvas;
     public GameObject resetButton;
-    public Camera gameCamera;
+    public GameObject gameCamera;
 
 
     public GameObject[] players = new GameObject[4];//players
