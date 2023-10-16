@@ -1,14 +1,19 @@
 using UnityEngine;
+using System.Linq;
+using TMPro;
 
 public class Knight : MonoBehaviour
 {
     public Player PlayerClass;
+    private TextMeshProUGUI mainText;
 
+    private bool UsingMight;
 
     private void Awake()
     {
         PlayerClass.mightText.text = "Might\n" + PlayerClass.might;
         PlayerClass.magicText.text = "Magic\n" + PlayerClass.magic;
+        mainText = GameObject.Find("MainText").GetComponent<TextMeshProUGUI>();
     }
     private void Update()
     {
@@ -30,6 +35,41 @@ public class Knight : MonoBehaviour
 
         //Returns the average of both dice rolls + Might Stat
 
-        return (Mathf.RoundToInt(PlayerClass.result[0] + PlayerClass.result[1] / 2) + PlayerClass.might);
+        if (UsingMight)
+        {
+            mainText.text = "Knight Rolled: " + (PlayerClass.result.Min() + PlayerClass.might);
+            Debug.Log("magician rolled with might");
+            return PlayerClass.result.Min() + PlayerClass.might;
+        }
+        else
+        {
+            mainText.text = "Knight Rolled: " + (PlayerClass.result.Min() + PlayerClass.magic);
+            Debug.Log("magician rolled with magic");
+            return PlayerClass.result.Min() + PlayerClass.magic;
+        }
+    }
+    private void OnEnable()
+    {
+        EventManager.SwitchRoomStatType += ChangeBool;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.SwitchRoomStatType -= ChangeBool;
+    }
+
+    private void ChangeBool()
+    {
+        if (UsingMight)
+            UsingMight = false;
+        else
+            UsingMight = true;
     }
 }
+
+   
+
+
+
+
+
