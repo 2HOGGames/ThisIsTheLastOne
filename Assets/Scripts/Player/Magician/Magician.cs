@@ -9,7 +9,7 @@ public class Magician : MonoBehaviour
     public Player PlayerClass;
 
     [SerializeField] private TextMeshProUGUI statNumber;
-    [SerializeField] private Animator magicianAnimator;
+    [SerializeField] private Animator diceAnimator;
     /*[SerializeField] private UnityEngine.UI.Image die1;
     [SerializeField] private UnityEngine.UI.Image die2;
     [SerializeField] private Sprite[] dieSprites;*/
@@ -32,8 +32,8 @@ public class Magician : MonoBehaviour
 
     public int RollMagician()
     {
-        //MagicianAnim.SetActive(true);
-        //magicianAnimator.SetBool("LuckySeven", false);
+        diceAnimator.SetBool("rolling", true);
+        diceAnimator.SetInteger("numRolled", 3);
         PlayerClass.result[0] = Random.Range(1, 7);
         PlayerClass.result[1] = Random.Range(1, 7);
 
