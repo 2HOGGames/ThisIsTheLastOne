@@ -29,12 +29,12 @@ public class gameManager : MonoBehaviour
     private int[] challengeInfo = new int[2];//the details of the current challenge
 
     private string[] cardDescription = new string[6] {
-        "Bully Slime Attacks!\n Roll your might vs 8\n losers take 3 damage", 
-        "Test of Strength!\n Roll your Might vs 6\n losers pull a muscle and take 1 damage",
-        "Cast a spell!\n Roll your Magic vs 7\n losers spell backfires hurting them for 1 damage",
-        "you found locked treasures!\n roll your Might or Magic vs a random number between 4-9\n losers are embarassed and take 1 damage",
-        "A mysterious room with unknown dangers\n roll your Might or Magic vs 8\n losers misplace their wallet and take 2 damage",
-        "Test your luck!\n roll 2d6 with no bonuses vs 0\nlosers are dissapointed but take no damage" };
+        "Bully Slime Attacks!\n Roll your Might vs 8\n Losers take 3 damage", 
+        "Test of Strength!\n Roll your Might vs 6\n Losers pull a muscle and take 1 damage",
+        "Cast a spell!\n Roll your Magic vs 7\n Losers spell backfires hurting them for 1 damage",
+        "You found locked treasures!\n Roll your Might or Magic vs a random number between 4-9\n Losers are embarrassed and take 1 damage",
+        "A mysterious room with unknown dangers\n Roll your Might or Magic vs 8\n Losers misplace their wallet and take 2 damage",
+        "Test your luck!\n Roll 2D6 with no bonuses vs 0\nLosers are disappointed but take no damage" };
 
     [SerializeField] private int[] playerRolls = new int[4];//what each player rolled
 
@@ -80,7 +80,7 @@ public class gameManager : MonoBehaviour
         //Commented this out so the game owuld run idk what happend......
         chosenRoom = deckShuffler.firstCard();
         challengeInfo = challengeDeck.ChosenRoom(chosenRoom);
-        Debug.Log("first card is " + chosenRoom);
+        Debug.Log("First card is " + chosenRoom);
 
 
         
@@ -95,7 +95,7 @@ public class gameManager : MonoBehaviour
         
         if (!selectingRoom)
         {
-            Debug.Log("it is player " + currentPlayer + " turn");
+            Debug.Log("It is player " + currentPlayer + "'s turn");
             if (!alreadyRolling)
             {
                     
@@ -115,15 +115,15 @@ public class gameManager : MonoBehaviour
                         //Debug.Log("notLuckRoom");
                     playerRolls[currentPlayer] = gameController.Roll();
                 }
-                    Debug.Log("you rolled " + playerRolls[currentPlayer] + " your Target is " + challengeInfo[0]);
+                    Debug.Log("You rolled " + playerRolls[currentPlayer] + " your Target is " + challengeInfo[0]);
                     mainText.text = ("You Rolled: " + playerRolls[currentPlayer]);
                 if (currentPlayer == 2)
                 {
                     waitForThief = true;
                     Inputs.MenuMode();
-                    Debug.Log("thief may reroll");
+                    Debug.Log("Thief may re-roll");
                     ThiefButton.SetActive(true);
-                    mainText.text = ("You Rolled: " + playerRolls[currentPlayer] + "\nWould You Like To ReRoll?");
+                    mainText.text = ("You Rolled: " + playerRolls[currentPlayer] + "\nWould You Like To Re-roll?");
 
                 }
                 currentPlayer++;
@@ -172,8 +172,8 @@ public class gameManager : MonoBehaviour
             playerRolls[currentPlayer] = gameController.Roll();
         }
         ThiefButton.SetActive(false);
-        Debug.Log("Thief Rerolled for" + playerRolls[currentPlayer]);
-        mainText.text = "Thief ReRolled: " + playerRolls[currentPlayer];
+        Debug.Log("Thief Re-rolled for" + playerRolls[currentPlayer]);
+        mainText.text = "Thief Re-rolled: " + playerRolls[currentPlayer];
         currentPlayer++;
     }
 
@@ -225,7 +225,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Magician Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Magician failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 1:
@@ -238,7 +238,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Knight Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Knight failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 2:
@@ -251,7 +251,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Thief Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Thief failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                     case 3:
@@ -264,7 +264,7 @@ public class gameManager : MonoBehaviour
                         }
                         else
                         {
-                            scorekeeper.text += "Human Failed the challenge and lost" + challengeInfo[1] + " stamina\n";
+                            scorekeeper.text += "Human failed the challenge and lost" + challengeInfo[1] + " stamina\n";
                         }
                         break;
                 }
@@ -367,7 +367,7 @@ public class gameManager : MonoBehaviour
         for ( int i = 0; i <= 3; i++)
         {
             //Debug.Log("player " + sortingArray[i] + "got " + (i+1) + " place with " + points[i]);
-            scorekeeper.text += "player " + sortingArray[i] + "got " + (i + 1) + " place with " + points[i] + "\n ";
+            scorekeeper.text += "Player " + sortingArray[i] + " got " + (i + 1) + " place with " + points[i] + "\n ";
             points[i] = 0;
             playerRolls[i] = 0;
             sortingArray[i] = i + 1;
