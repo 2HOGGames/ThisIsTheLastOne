@@ -319,7 +319,7 @@ public class gameManager : MonoBehaviour
             gameCamera.transform.position = new Vector3(0, nextPos, -10);//moves camera
             for(int i = 0; i <= 3; i++)
             {
-                players[i].transform.position = new Vector3(players[i].transform.position.x,players[i].transform.position.y + 8, players[i].transform.position.z);
+                players[i].transform.position = new Vector3(players[i].transform.position.x,players[i].transform.position.y + nextPos, players[i].transform.position.z);
             }
         }
     }
