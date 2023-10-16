@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: {fileID: 1234745546}
-  room: {fileID: 1308109498120895629, guid: 885ef57033120ab45bd3cf25eaf0cfa1, type: 3}
+  room: {fileID: 569539227588378888, guid: e75ed3d8fab09e64193b6f702c27794e, type: 3}
   roomSprites:
   - {fileID: 21300000, guid: db71c40ecaea28a41b2240b5f4585a2c, type: 3}
   - {fileID: 21300000, guid: fb6bdfe005051374cb2ce7beba7341a4, type: 3}
